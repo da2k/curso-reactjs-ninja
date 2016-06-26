@@ -26,3 +26,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 - O shell é o [ZSH](http://www.zsh.org/) com [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh);
 - O tema é [este](https://github.com/fdaciuk/avit-da2k).
 - A fonte é a [**Consolas**](http://www.fontpalace.com/font-download/Consolas/), tamanho `13` para os videos e `11` para uso pessoal.
+
+## Lint
+
+Vamos utilizar o [`standard`](https://github.com/feross/standard).
