@@ -26,7 +26,16 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 - O shell é o [ZSH](http://www.zsh.org/) com [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh);
 - O tema é [este](https://github.com/fdaciuk/avit-da2k).
 - A fonte é a [**Consolas**](http://www.fontpalace.com/font-download/Consolas/), tamanho `13` para os videos e `11` para uso pessoal.
+- O arquivo de configuração do `zsh`, você pode [ver aqui](https://github.com/da2k/curso-reactjs-ninja/blob/master/config/.zshrc).
+
+### .zshrc
+
+Só estou utilizando dois plugins no ZSH: git e wakatime. O git já vem instalado por padrão. Para o wakatime, basta seguir [essas instruções](https://github.com/wbinglee/zsh-wakatime).
+
+No `.zshrc` tem algumas configurações também para o [heroku toolbelt](https://toolbelt.heroku.com/), [NVM](https://github.com/creationix/nvm) e [autojump](https://github.com/wting/autojump).
 
 ## Lint
 
 Vamos utilizar o [`standard`](https://github.com/feross/standard).
+
+Se você prefere utlizar `;`, mas quer utilizar os padrões do `standard`, pode usar o [`semi-standard`](https://github.com/Flet/semistandard).
