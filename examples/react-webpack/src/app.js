@@ -1,11 +1,12 @@
 'use strict'
 
 import React from 'react'
+import NewComponent from './new-component'
 
-var Title = React.createClass({
+var App = React.createClass({
   render: function () {
-    return <h1>Título</h1>
+    return <NewComponent />
   }
 })
 
-export default Title
+export default App
