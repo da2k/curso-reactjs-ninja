@@ -11,7 +11,7 @@ A instalação do Vundle é bem simples:
 - Clone o repositório no diretório `~/.vim`:
 
 ```console
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/plugins/Vundle.vim
 ```
 
 - Copie o arquivo [`.vimrc`](https://github.com/da2k/curso-reactjs-ninja/blob/master/config/.vimrc) para o seu diretório`home` (~);
