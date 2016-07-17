@@ -5,7 +5,7 @@ import Timer from './timer'
 
 class App extends Component {
   constructor () {
-    console.log('constructor')
+    console.log('constructor app')
     super()
     this.state = {
       time: 0,
@@ -14,15 +14,15 @@ class App extends Component {
   }
 
   componentWillMount () {
-    console.log('componentWillMount')
+    console.log('componentWillMount app')
   }
 
   componentDidMount () {
-    console.log('componentDidMount')
+    console.log('componentDidMount app')
   }
 
   render () {
-    console.log('render')
+    console.log('render app')
 
     return (
       <div>
