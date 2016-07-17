@@ -1,11 +1,25 @@
 'use strict'
 
-import React from 'react'
+import React, { Component } from 'react'
 
-const App = () => (
-  <form>
-    <input type='text' />
-  </form>
-)
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      value: 'Valor inicial'
+    }
+  }
+  render () {
+    return (
+      <div>
+        <form>
+          <input type='text' value={this.state.value} onChange={(e) => {
+            this.setState({ value: e.target.value })
+          }} />
+        </form>
+      </div>
+    )
+  }
+}
 
 export default App
