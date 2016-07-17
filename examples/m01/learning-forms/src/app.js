@@ -2,12 +2,10 @@
 
 import React from 'react'
 
-const App = React.createClass({
-  render: function () {
-    return (
-      <div>My App</div>
-    )
-  }
-})
+const App = () => (
+  <form>
+    <input type='text' />
+  </form>
+)
 
 export default App
