@@ -1,9 +1,10 @@
 'use strict'
 
 import React from 'react'
+import Plugin from './plugin'
 
 const App = () => (
-  <div>My App</div>
+  <Plugin />
 )
 
 export default App
