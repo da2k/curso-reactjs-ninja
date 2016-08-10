@@ -1,0 +1,73 @@
+@charset 'utf-8';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  float: left;
+  padding: 30px;
+  width: 100%;
+}
+
+.search {
+  margin-bottom: 30px;
+}
+
+.search input {
+  font-size: 30px;
+  padding: 10px;
+  width: 100%;
+}
+
+.user-info img {
+  float: left;
+  margin: 0 20px 20px 0;
+  max-height: 200px;
+}
+
+.repos-info li {
+  padding: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.actions,
+.repos,
+.starred {
+  float: left;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  font-size: 20px;
+  font-weight: 700;
+  height: 50px;
+  text-transform: uppercase;
+  width: 48%;
+}
+
+.repos li,
+.starred li {
+  padding: 10px 0;
+}
+
+.repos li + li,
+.starred li + li {
+  border-top: 1px solid #ccc;
+}
