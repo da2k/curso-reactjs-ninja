@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
