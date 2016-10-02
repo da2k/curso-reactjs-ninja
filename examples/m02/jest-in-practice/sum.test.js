@@ -1,8 +1,8 @@
 'use strict'
 
-describe('# ESCOPO DO TESTE', () => {
-  it('Um é igual a 1', () => {
-    expect(1).toBe(1)
-  })
-})
+const expect = require('chai').expect
+const sum = require('./sum')
 
+it('sum should be a function', () => {
+  expect(sum).to.be.a('function')
+})
