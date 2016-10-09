@@ -1,7 +1,7 @@
 'use strict'
 
 const filter = (arr, func) => {
-  return (function filterInternal(arrayInternal, counter) {
+  return (function filterInternal (arrayInternal, counter) {
     const [head, ...tail] = arrayInternal
 
     return arrayInternal.length === 0
