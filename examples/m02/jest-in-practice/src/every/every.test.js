@@ -18,3 +18,11 @@ it('every([0, 2, 3], (item) => item) should return false', () => {
 it('every([1, 2, 3], (item) => item) should return true', () => {
   expect(every([1, 2, 3], (item) => item)).to.be.ok
 })
+
+it('every([1, 2, 3], (item, index) => index === item - 1) should return true', () => {
+  expect(every([1, 2, 3], (item, index) => index === item - 1)).to.be.ok
+})
+
+it('every([1, 2, 3], (item, index, array) => array.length === 3) should return true', () => {
+  expect(every([1, 2, 3], (item, index, array) => array.length === 3)).to.be.ok
+})
