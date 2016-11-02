@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack --progress --config webpack.prod.config -p"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
