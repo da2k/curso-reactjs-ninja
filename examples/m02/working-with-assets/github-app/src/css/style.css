@@ -16,16 +16,6 @@ body {
   width: 100%;
 }
 
-.user-info img {
-  float: left;
-  margin: 0 20px 20px 0;
-  max-height: 200px;
-}
-
-.repos-info li {
-  padding: 5px;
-}
-
 ul {
   list-style: none;
   padding: 0;
@@ -40,13 +30,6 @@ ul {
   width: 100%;
 }
 
-.actions button {
-  font-size: 20px;
-  font-weight: 700;
-  height: 50px;
-  text-transform: uppercase;
-}
-
 .actions button,
 .repos-container > div {
   margin-right: 20px;
@@ -55,15 +38,5 @@ ul {
 
 .actions :first-child,
 .repos-container :first-child {
-  margin-left: 0
-}
-
-.repos li,
-.starred li {
-  padding: 10px 0;
-}
-
-.repos li + li,
-.starred li + li {
-  border-top: 1px solid #ccc;
+  margin-left: 0;
 }

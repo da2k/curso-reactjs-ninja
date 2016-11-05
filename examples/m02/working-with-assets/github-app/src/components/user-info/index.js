@@ -1,6 +1,7 @@
 'use strict'
 
 import React, { PropTypes } from 'react'
+import './user-info.css'
 
 const UserInfo = ({ userinfo }) => (
   <div className='user-info'>
