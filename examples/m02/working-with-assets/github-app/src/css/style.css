@@ -43,15 +43,11 @@ ul {
 }
 
 .actions,
-.repos,
-.starred {
-  float: left;
-  width: 100%;
-}
-
-.actions {
+.repos-container {
   display: flex;
   justify-content: space-between;
+  float: left;
+  width: 100%;
 }
 
 .actions button {
@@ -59,7 +55,17 @@ ul {
   font-weight: 700;
   height: 50px;
   text-transform: uppercase;
-  width: 48%;
+}
+
+.actions button,
+.repos-container > div {
+  margin-right: 20px;
+  width: 100%
+}
+
+.actions :first-child,
+.repos-container :first-child {
+  margin-left: 0
 }
 
 .repos li,
