@@ -2,8 +2,8 @@
   "scripts": {
     "start": "webpack-dashboard -- node server.js",
     "build": "cross-env NODE_ENV=production webpack --progress --config webpack.prod.config -p",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 -c storybook",
+    "build-storybook": "build-storybook -c storybook"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
