@@ -14,7 +14,7 @@ stories.add('first story', () => (
 ))
 
 stories.add('second story', () => (
-   <Actions
+  <Actions
     getRepos={action('Get Repos')}
     getStarred={action('Get Starred')}
   />
