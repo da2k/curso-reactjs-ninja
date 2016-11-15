@@ -28,6 +28,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/plugins/Vundle.vim
 - A fonte é a [**Consolas**](http://www.fontpalace.com/font-download/Consolas/), tamanho `13` para os videos e `11` para uso pessoal.
 - O arquivo de configuração do `zsh`, você pode [ver aqui](https://github.com/da2k/curso-reactjs-ninja/blob/master/config/.zshrc).
 
+**UPDATE:** Fiz algumas pequenas modificações no uso do terminal, a partir da aula #40 do módulo #02:
+- Ao invés do Terminator, estou usando o terminal default do Ubuntu 16.04;
+- Agora estou usando o `tmux`, com o [Byobu](http://byobu.co/) - Vou gravar um vídeo falando sobre ele e colo o link aqui =)
+
 ### .zshrc
 
 Só estou utilizando dois plugins no ZSH: git e wakatime. O git já vem instalado por padrão. Para o wakatime, basta seguir [essas instruções](https://github.com/wbinglee/zsh-wakatime).
