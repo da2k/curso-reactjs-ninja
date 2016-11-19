@@ -1,0 +1,8 @@
+@charset 'utf-8';
+
+.actions button {
+  font-size: 20px;
+  font-weight: 700;
+  height: 50px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,11 @@
+@charset 'utf-8';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px sans-serif;
+  margin: 0;
+  padding: 0;
+}

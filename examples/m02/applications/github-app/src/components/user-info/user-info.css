@@ -1,0 +1,13 @@
+@charset 'utf-8';
+
+.user-info img {
+  float: left;
+  margin: 0 20px 20px 0;
+  max-height: 200px;
+}
+
+.repos-info li {
+  padding: 5px;
+}
+
+
