@@ -102,16 +102,3 @@ test('pagination({ total: 15, activePage: 8 }) should return [1, "...", 7, 8, 9,
   const result = [1, '...', 5, 6, 7]
   expect(pagination(params)).to.be.deep.equal(result)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
