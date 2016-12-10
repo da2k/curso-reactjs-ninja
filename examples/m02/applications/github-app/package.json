@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dashboard -- node server.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --no-cache",
     "test:watch": "yarn test -- --watch",
     "lint": "standard --verbose | snazzy",
     "lint:watch": "gulp",
