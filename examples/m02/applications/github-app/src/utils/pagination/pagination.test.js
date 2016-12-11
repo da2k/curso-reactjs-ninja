@@ -122,18 +122,22 @@ test('pagination() should return [1]', () => {
 
 test('pagination({ total: "abc", activePage: 1 }) should throw an error', () => {
   const params = { total: 'abc', activePage: 1 }
+  const result = 'total should be a number'
+
   try {
     pagination(params)
   } catch (e) {
-    expect(e.message).to.be.equal('total should be a number')
+    expect(e.message).to.be.equal(result)
   }
 })
 
 test('pagination({ total: 10, activePage: "1a" }) should throw an error', () => {
   const params = { total: 10, activePage: '1a' }
+  const result = 'activePage should be a number'
+
   try {
     pagination(params)
   } catch (e) {
-    expect(e.message).to.be.equal('activePage should be a number')
+    expect(e.message).to.be.equal(result)
   }
 })
