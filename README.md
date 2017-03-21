@@ -8,4 +8,4 @@ Informações sobre o curso: http://blog.da2k.com.br/curso-reactjs-ninja/
 - [Módulo #02](ementa-modulo-02.md)
 - Módulo #03 (em breve)
 
-Para adquirir o curso, acesse: http://www.eventick.com.br/curso-reactjs-ninja
+Para adquirir o curso, acesse: https://eventloop.com.br/curso-reactjs-ninja
