@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import MarkdownEditor from './markdown-editor'
 
+import 'normalize.css'
 import './css/style.css'
 
 class App extends Component {
@@ -13,6 +14,10 @@ class App extends Component {
     this.handleChange = (e) => {
       this.setState({ value: e.target.value })
     }
+
+    this.getMarkup = () => {
+      return { __html: this.state.value }
+    }
   }
 
   render () {
@@ -20,6 +25,7 @@ class App extends Component {
       <MarkdownEditor
         value={this.state.value}
         handleChange={this.handleChange}
+        getMarkup={this.getMarkup}
       />
     )
   }
