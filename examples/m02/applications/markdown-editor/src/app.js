@@ -7,33 +7,28 @@ import './css/style.css'
 class App extends Component {
   constructor () {
     super()
-    this.state = {
-      title: '...',
-      Component: 'div'
+    this.state = { value: '' }
+
+    this.handleSubmit = (e) => {
+      e.preventDefault()
+
+      this.setState({
+        value: e.target.textarea.value
+      })
     }
-  }
-
-  getTitle () {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('My app with async / await!')
-      }, 2000)
-    })
-  }
-
-  async componentDidMount () {
-    const title = await import('components/title')
-
-    this.setState({
-      title: await this.getTitle(),
-      Component: title.default
-    })
   }
 
   render () {
     return (
-      <div>
-        <this.state.Component>{this.state.title}</this.state.Component>
+      <div className='editor'>
+        <form onSubmit={this.handleSubmit}>
+          <textarea name='textarea' />
+          <button type='submit'>Renderizar markup</button>
+        </form>
+
+        <div className='view'>
+          {this.state.value}
+        </div>
       </div>
     )
   }
