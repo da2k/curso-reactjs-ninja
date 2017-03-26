@@ -1,3 +1,65 @@
 @charset 'utf-8';
 
+* {
+  box-sizing: border-box;
+}
 
+html,
+body,
+body > div {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+.editor {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form,
+.view {
+  min-width: 50%;
+  max-width: 50%;
+}
+
+textarea {
+  border: 8px solid #fc0;
+  font-size: 18px;
+  padding: 10px;
+  resize: none;
+  width: 100%;
+}
+
+textarea:focus {
+  outline: 0 none;
+}
+
+button {
+  background: linear-gradient(#ff0, #fa0);
+  border: 3px solid #fd0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  height: 15%;
+  margin: 0;
+  text-transform: uppercase;
+  transition: all 0.15s ease-in-out;
+  width: 100%;
+}
+
+.view {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
