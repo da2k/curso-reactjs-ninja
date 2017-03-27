@@ -1,5 +1,8 @@
 @charset 'utf-8';
 
+@import '~normalize.css';
+@import '~highlight.js/styles/dracula.css';
+
 * {
   box-sizing: border-box;
 }
