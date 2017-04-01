@@ -13,7 +13,9 @@ const paths = {
 module.exports = {
   paths,
 
-  entry: join(paths.src, 'index'),
+  entry: {
+    main: join(paths.src, 'index')
+  },
 
   output: {
     path: paths.dist,
