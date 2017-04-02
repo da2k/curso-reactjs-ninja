@@ -1,15 +1,16 @@
 {
   "scripts": {
-    "start": "webpack-dashboard -- node server.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "webpack-dashboard -- node server.js",
     "test": "jest --coverage",
     "test:watch": "yarn test -- --watch",
     "lint": "standard --parser babel-eslint --verbose | snazzy",
     "lint:watch": "gulp",
     "lint:fix": "standard --fix",
-    "build": "cross-env NODE_ENV=production webpack --progress --config webpack/prod.config -p",
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --config webpack/prod.config -p",
     "build:analyzer": "cross-env ANALYZER=true yarn build",
     "storybook": "start-storybook -p 6006 -c storybook",
-    "build-storybook": "cross-env NODE_ENV=production build-storybook -c storybook",
+    "build-storybook": "cross-env NODE_ENV=production BABEL_ENV=production build-storybook -c storybook",
     "update-packages": "node scripts/update.js"
   },
   "devDependencies": {
