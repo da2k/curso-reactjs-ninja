@@ -21,48 +21,53 @@ body {
 
 .editor {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
 }
 
-form {
+.editor-header {
+  background: #222;
   display: flex;
-  flex-direction: column;
+  height: 40px;
+  justify-content: flex-end;
+  width: 100%;
 }
 
-form,
+.editor-header .save {
+  border: 0;
+  background: green;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 20px;
+
+}
+
+.editor-header .save:hover {
+  background: darkgreen;
+}
+
+textarea,
 .view {
+  height: 100%;
   min-width: 50%;
   max-width: 50%;
 }
 
 textarea {
-  border: 8px solid #fc0;
   font-size: 18px;
   padding: 10px;
   resize: none;
-  width: 100%;
 }
 
 textarea:focus {
   outline: 0 none;
 }
 
-button {
-  background: linear-gradient(#ff0, #fa0);
-  border: 3px solid #fd0;
-  color: #333;
-  font-size: 20px;
-  font-weight: 700;
-  height: 15%;
-  margin: 0;
-  text-transform: uppercase;
-  transition: all 0.15s ease-in-out;
-  width: 100%;
-}
-
 .view {
   background: #333;
   color: #fff;
+  font-family: sans-serif;
   padding: 10px;
 }
