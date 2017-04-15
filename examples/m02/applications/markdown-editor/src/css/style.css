@@ -34,18 +34,14 @@ body {
   width: 100%;
 }
 
-.editor-header .save {
-  border: 0;
-  background: green;
+.editor-header .save-message {
+  align-items: center;
   color: #fff;
-  font-weight: 700;
-  text-transform: uppercase;
+  display: flex;
+  font: 15px sans-serif;
+  margin: 0;
   padding: 0 20px;
 
-}
-
-.editor-header .save:hover {
-  background: darkgreen;
 }
 
 textarea,
