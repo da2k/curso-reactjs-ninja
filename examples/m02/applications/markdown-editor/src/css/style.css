@@ -41,12 +41,25 @@ body {
   font: 15px sans-serif;
   margin: 0;
   padding: 0 20px;
+}
 
+.button-remove {
+  border: 0;
+  background: red;
+  color: #fff;
+  font-weight: 700;
+  padding: 0 20px;
+  text-transform: uppercase;
+  transition: all 0.25s ease-in-out;
+}
+
+.button-remove:hover {
+  background: darkred;
 }
 
 textarea,
 .view {
-  height: 100%;
+  height: calc(100% - 40px);
   min-width: 50%;
   max-width: 50%;
 }
@@ -65,5 +78,6 @@ textarea:focus {
   background: #333;
   color: #fff;
   font-family: sans-serif;
+  overflow: auto;
   padding: 10px;
 }
