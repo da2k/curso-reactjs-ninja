@@ -1,25 +1,28 @@
 'use strict'
 
 import React, { PropTypes } from 'react'
+import Button from 'components/button'
 
 const MarkdownEditorHeader = ({ isSaving, handleRemove, handleCreate }) => (
   <header className='editor-header'>
-    <p className='save-message'>
-      {isSaving ? 'Salvando...' : 'Salvo!'}
-    </p>
+    {isSaving !== null && (
+      <p className='save-message'>
+        {isSaving ? 'Salvando...' : 'Salvo!'}
+      </p>
+    )}
 
-    <button onClick={handleCreate}>
+    <Button onClick={handleCreate} kind='success'>
       Criar novo
-    </button>
+    </Button>
 
-    <button onClick={handleRemove} className='button-remove'>
+    <Button onClick={handleRemove} kind='danger'>
       Remover
-    </button>
+    </Button>
   </header>
 )
 
 MarkdownEditorHeader.propTypes = {
-  isSaving: PropTypes.bool.isRequired,
+  isSaving: PropTypes.bool,
   handleRemove: PropTypes.func.isRequired,
   handleCreate: PropTypes.func.isRequired
 }
