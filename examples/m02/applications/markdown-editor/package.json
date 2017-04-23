@@ -51,11 +51,13 @@
     "normalize.css": "^6.0.0",
     "preact": "^7.2.1",
     "preact-compat": "^3.14.3",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "webpack-bundle-analyzer": "^2.3.1"
   },
   "standard": {
-    "globals": ["localStorage"]
+    "globals": [
+      "localStorage"
+    ]
   }
 }
