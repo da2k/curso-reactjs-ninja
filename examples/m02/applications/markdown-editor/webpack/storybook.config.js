@@ -8,7 +8,7 @@ module.exports = (config, env) => {
 
   const preloaders = Object.assign({}, common.standardPreLoader, {
     use: undefined,
-    loader: 'common.standardPreLoader.use.loader'
+    loader: common.standardPreLoader.use.loader
   })
 
   newConfig.module.preLoaders = (newConfig.module.preLoaders || []).concat(preloaders)
