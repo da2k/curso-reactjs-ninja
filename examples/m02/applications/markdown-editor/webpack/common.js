@@ -74,6 +74,10 @@ module.exports = {
     }
   },
 
+  module: {
+    noParse: /\.min\.js$/
+  },
+
   resolve: {
     alias: {
       src: paths.src,
