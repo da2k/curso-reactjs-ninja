@@ -58,6 +58,11 @@ class App extends Component {
 
     this.handleRemove = () => {
       localStorage.removeItem(this.state.id)
+
+      // eslint-disable-next-line no-unused-vars
+      const { [this.state.id]: id, ...files } = this.state.files
+
+      this.setState({ files })
       this.createNew()
     }
 
