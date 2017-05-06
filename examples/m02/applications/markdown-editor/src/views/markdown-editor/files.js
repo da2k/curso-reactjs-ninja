@@ -9,7 +9,7 @@ const Files = ({ files, handleOpenFile }) => (
     <ul>
       {Object.keys(files).map((fileId) => (
         <li key={fileId}>
-          <button onClick={handleOpenFile(fileId)}>{fileId}</button>
+          <button onClick={handleOpenFile(fileId)}>{files[fileId].title}</button>
         </li>
       ))}
     </ul>
