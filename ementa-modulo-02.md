@@ -9,8 +9,15 @@ _O que será mostrado nesse módulo?_
 - Ferramentas para testes unitários;
 - Ferramentas para testes visuais e interativos;
 - Desenvolver componentes utilizando as ferramentas apresentadas;
+- Aprender a otimizar o Critical Rendering Path de uma aplicação;
 - Entender problemas que teremos ao desenvolver componentes para uma aplicação real, e aprender como resolvê-los na prática;
-- Criar configuração para o build de produção da nossa aplicação.
+- Aprender a trabalhar com o webpack 2, e como fazer otimizações para nossa aplicação;
+- Aprender a fazer code splitting com webpack;
+- Aprender a utilizar loaders para utilizar importar qualquer tipo de arquivo no JS;
+- Criar configuração para o build de produção da nossa aplicação;
+- Aprender a persistir dados no frontend de uma aplicação React;
+- Aprender a usar a Context API de forma segura;
+- Aprender a criar e utilizar HOCs;
 
 ## Conteúdo adicional
 
