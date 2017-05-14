@@ -10,17 +10,16 @@ class Message extends Component {
 
   render () {
     return (
-      <li style={{ background: this.context.color }}>
+      <li style={{ background: this.context.store.color }}>
         {this.props.text}
-        <button onClick={this.context.setColor(this.props.color)}>Change color</button>
+        <button onClick={this.context.store.setColor(this.props.color, () => this.forceUpdate())}>Change color</button>
       </li>
     )
   }
 }
 
 Message.contextTypes = {
-  color: PropTypes.string,
-  setColor: PropTypes.func
+  store: PropTypes.object
 }
 
 export default Message
