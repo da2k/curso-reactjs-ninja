@@ -4,6 +4,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Message extends Component {
+  shouldComponentUpdate () {
+    return false
+  }
+
   render () {
     return (
       <li style={{ background: this.context.color }}>
