@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import after3s from './after3s'
 
 class Message extends Component {
   componentDidMount () {
@@ -30,4 +31,4 @@ Message.contextTypes = {
   store: PropTypes.object
 }
 
-export default Message
+export default after3s(Message)
