@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "jest --no-cache"
+  },
+  "dependencies": {
+    "jest": "^20.0.4"
+  }
+}
