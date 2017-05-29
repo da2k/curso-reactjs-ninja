@@ -12,6 +12,7 @@ module.exports = (config, env) => {
   })
 
   newConfig.module.preLoaders = (newConfig.module.preLoaders || []).concat(preloaders)
+  newConfig.module.noParse = common.module.noParse
   newConfig.resolve = common.resolve
 
   return newConfig
