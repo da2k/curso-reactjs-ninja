@@ -1,4 +1,4 @@
-# Curso ReactJS Ninja - Módulo #02
+# Curso ReactJS Ninja - Módulo #03
 
 > Nesse módulo nós vamos aprender a manipular estados da aplicação fora do React, usando Redux!
 
