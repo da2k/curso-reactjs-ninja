@@ -1,0 +1,59 @@
+{
+  "scripts": {
+    "start": "yarn dev",
+    "dev": "webpack-dashboard -- node server.js",
+    "test": "jest --coverage",
+    "test:watch": "yarn test -- --watch",
+    "lint": "standard --parser babel-eslint --verbose | snazzy",
+    "lint:watch": "gulp",
+    "lint:fix": "standard --fix",
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --config webpack/prod.config -p",
+    "build:analyzer": "cross-env ANALYZER=true yarn build",
+    "storybook": "start-storybook -p 6006 -c storybook",
+    "build-storybook": "cross-env NODE_ENV=production BABEL_ENV=production build-storybook -c storybook",
+    "update-packages": "node scripts/update.js"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.css$": "<rootDir>/config/CSSStub.js"
+    }
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "chai": "^3.5.0",
+    "clean-webpack-plugin": "^0.1.15",
+    "cross-env": "^3.1.4",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "gulp": "^3.9.1",
+    "html-webpack-plugin": "^2.28.0",
+    "jest": "^20.0.4",
+    "react-hot-loader": "3.0.0-beta.6",
+    "react-test-renderer": "^15.5.4",
+    "snazzy": "^6.0.0",
+    "standard": "^8.6.0",
+    "standard-loader": "^5.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.3.1",
+    "webpack-dashboard": "^0.3.0",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.22.0",
+    "preact": "^7.2.1",
+    "preact-compat": "^3.14.3",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
