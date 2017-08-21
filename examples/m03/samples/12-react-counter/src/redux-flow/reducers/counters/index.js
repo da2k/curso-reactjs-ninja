@@ -1,10 +1,6 @@
 'use strict'
 
-export const ADD_COUNTER = 'ADD_COUNTER'
-export const REMOVE_COUNTER = 'REMOVE_COUNTER'
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-
+import { ADD_COUNTER, REMOVE_COUNTER, INCREMENT, DECREMENT } from './actions'
 export const initialState = []
 
 export default (state = initialState, action) => {
