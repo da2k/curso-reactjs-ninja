@@ -18,3 +18,7 @@ que você precisa instalar a cada aula para acompanhar o curso todo sem maiores 
 ## Quer se tornar um ninja em React?
 
 Para adquirir o curso, acesse [esse link](https://www.udemy.com/curso-reactjs-ninja/?couponCode=PREVENDAMODULO4) (já está aplicado o cupom da pré-venda atual)
+
+Ou ainda, se preferir parcelar em até 6x, compre por [esse link](https://eventloop.com.br/curso-reactjs-ninja) no Eventloop.
+
+> PS.: Ao comprar pelo Eventloop, deixe uma mensagem lá pela plataforma deles avisando da sua compra, para que eu possa te enviar o acesso na Udemy ;)
