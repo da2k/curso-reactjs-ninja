@@ -37,6 +37,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
+    "deep-freeze": "^0.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
