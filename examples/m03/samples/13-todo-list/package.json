@@ -10,7 +10,7 @@
     "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --config webpack/prod.config -p",
     "build:analyzer": "cross-env ANALYZER=true yarn build",
     "storybook": "start-storybook -p 6006 -c storybook",
-    "build-storybook": "cross-env NODE_ENV=production BABEL_ENV=production build-storybook -c storybook",
+    "storybook:build": "cross-env NODE_ENV=production BABEL_ENV=production build-storybook -c storybook",
     "update-packages": "node scripts/update.js"
   },
   "jest": {
@@ -19,10 +19,13 @@
     }
   },
   "standard": {
-    "globals": ["it", "expect"]
+    "globals": [
+      "it",
+      "expect"
+    ]
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
+    "@storybook/react": "^3.2.8",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-loader": "^7.1.2",
