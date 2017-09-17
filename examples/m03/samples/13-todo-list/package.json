@@ -18,6 +18,9 @@
       "^.+\\.css$": "<rootDir>/config/CSSStub.js"
     }
   },
+  "standard": {
+    "globals": ["it", "expect"]
+  },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
     "babel-core": "^6.26.0",
