@@ -1,3 +1,3 @@
 # Todo List
 
-Reducer para _todos_
+Adicionado reducer _todos_ na aplicação
