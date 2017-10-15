@@ -1,3 +1,3 @@
 # Todo List
 
-Isolar componentes
+Nomes para actions
