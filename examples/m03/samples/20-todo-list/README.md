@@ -1,3 +1,3 @@
 # Todo List
 
-Isolar componentes
+Implementação do reducer _visibilityFilter_
