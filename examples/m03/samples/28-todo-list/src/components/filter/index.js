@@ -4,26 +4,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from 'reducers/visibility-filter/actions'
 import { setVisibilityFilter } from 'reducers/visibility-filter/action-creators'
+import FilterLink from './filter-link'
 
 const Filter = ({ activeFilter, handleFilter }) => (
   <div>
     <h3>Mostrar</h3>
-    {filterItems.map((item) => {
-      if (item.action === activeFilter) {
-        return <span key={item.action} style={{ marginRight : 10 }}>{item.label}</span>
-      }
-
-      return (
-        <a
-          href=''
-          key={item.action}
-          style={{ marginRight : 10 }}
-          onClick={handleFilter(item.action)}
-        >
-          {item.label}
-        </a>
-      )
-    })}
+    {filterItems.map((item) => (
+      <FilterLink
+        key={item.action}
+        action={item.action}
+        activeFilter={activeFilter}
+        onClick={handleFilter(item.action)}
+      >
+        {item.label}
+      </FilterLink>
+    ))}
   </div>
 )
 
