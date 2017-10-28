@@ -1,3 +1,3 @@
 # Todo List
 
-Nomes para actions
+Atualizar _state_ do filtro
