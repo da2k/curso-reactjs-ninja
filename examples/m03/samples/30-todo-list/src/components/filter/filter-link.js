@@ -12,7 +12,7 @@ const FilterLink = ({ action, activeFilter, children, onClick }) => {
     <component.tag
       href={component.href}
       onClick={component.onClick}
-      style={{ marginRight : 10 }}
+      style={{ marginRight: 10 }}
     >
       {children}
     </component.tag>
