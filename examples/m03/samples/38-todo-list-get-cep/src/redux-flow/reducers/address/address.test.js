@@ -5,10 +5,6 @@ import deepFreeze from 'deep-freeze'
 import address from './index'
 import { UPDATE_ADDRESS } from './actions'
 
-it('address should be a function', () => {
-  expect(address).to.be.a('function')
-})
-
 it('should  action UPDATE_ADDRESS update address', () => {
   const before = deepFreeze({
     address: '',
@@ -16,7 +12,7 @@ it('should  action UPDATE_ADDRESS update address', () => {
     code: '',
     district: '',
     state: '',
-    status: 1,
+    status: 1
   })
 
   const action = deepFreeze({
