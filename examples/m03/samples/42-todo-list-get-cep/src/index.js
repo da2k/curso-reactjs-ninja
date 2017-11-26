@@ -8,24 +8,7 @@ import { Provider } from 'react-redux'
 import App from './app'
 import reducer from 'reducers'
 
-const initialState = {
-  todos: [{
-    text: 'auto',
-    id: '123',
-    completed: true
-  }],
-
-  address: {
-    address: 'Rua tal',
-    city: 'cidade',
-    code: '10101-123',
-    district: 'Bairro',
-    state: 'PR',
-    status: 1
-  }
-}
-
-const store = createStore(reducer, initialState)
+const store = createStore(reducer)
 
 const renderState = () => {
   console.log('state:', store.getState())
@@ -51,5 +34,10 @@ if (module.hot) {
   module.hot.accept('./app', () => {
     const NextApp = require('./app').default
     renderApp(NextApp)
+  })
+
+  module.hot.accept('reducers', () => {
+    const nextReducer = require('reducers').default
+    store.replaceReducer(nextReducer)
   })
 }
