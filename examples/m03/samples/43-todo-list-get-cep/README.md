@@ -1,6 +1,6 @@
 # Todo List + Busca CEP
 
-Ações assíncronas no Redux
+Criando middlewares com Redux
 
 *Serviços que você pode usar (esses são apenas sugestões, se você conhecer algum outro, fique à vontade para usar):*
 
