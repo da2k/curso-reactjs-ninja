@@ -1,6 +1,6 @@
 # Todo List + Busca CEP
 
-Ações assíncronas na aplicação com Redux
+Ações assíncronas na aplicação com Redux - configuração da store
 
 *Serviços que você pode usar (esses são apenas sugestões, se você conhecer algum outro, fique à vontade para usar):*
 
