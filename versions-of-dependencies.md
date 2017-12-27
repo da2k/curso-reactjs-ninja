@@ -52,3 +52,11 @@ babel-preset-react:
 ```
 npm install --save-dev babel-preset-react@6
 ```
+
+### Vídeo 10
+
+standard (pode ser a última versão) e standard-loader:
+
+```
+npm install --save-dev standard standard-loader@4
+```
