@@ -21,7 +21,8 @@
   "standard": {
     "globals": [
       "it",
-      "expect"
+      "expect",
+      "firebase"
     ]
   },
   "devDependencies": {
