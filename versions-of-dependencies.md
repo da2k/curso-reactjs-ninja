@@ -60,3 +60,13 @@ standard (pode ser a última versão) e standard-loader:
 ```
 npm install --save-dev standard standard-loader@4
 ```
+
+## Módulo 2
+
+### M3#A43
+
+Instalação do `getstorybook` global:
+
+```
+npm i -g getstorybook@1.6.1
+```
