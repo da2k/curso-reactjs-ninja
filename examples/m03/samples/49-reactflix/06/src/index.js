@@ -12,10 +12,10 @@ const store = configureStore()
 const db = firebase.database()
 const videos = db.ref('videos')
 
-const videoJS = videos.push()
+const anyVideo = videos.push()
 
-videoJS.set({
-  id: '7Ur9zN2vMcs',
+anyVideo.update({
+  id: 'novo'
 })
 
 videos.on('value', (snapshot) => {
