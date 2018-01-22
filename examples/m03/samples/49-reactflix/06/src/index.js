@@ -10,6 +10,7 @@ import configureStore from './redux-flow/configure-store'
 const store = configureStore()
 
 const db = firebase.database()
+const videos = db.ref('videos')
 
 db.ref('categories').remove()
 
