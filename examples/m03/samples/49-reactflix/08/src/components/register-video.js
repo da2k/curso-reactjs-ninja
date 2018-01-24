@@ -2,9 +2,10 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
-const RegisterVideo = () => (
-  <Form>
+const RegisterVideo = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
     <h2>Cadastrar vídeo</h2>
 
     <label htmlFor='id'>ID do vídeo:</label>
@@ -21,4 +22,17 @@ const Form = styled.form`
   padding: 10px;
 `
 
-export default RegisterVideo
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (e) => {
+    e.preventDefault()
+    dispatch({
+      type: 'videos:ADD_VIDEO',
+      payload: {
+        id: '7Ur9zN2vMcs',
+        title: 'JavaScript Secrets'
+      }
+    })
+  }
+})
+
+export default connect(null, mapDispatchToProps)(RegisterVideo)
