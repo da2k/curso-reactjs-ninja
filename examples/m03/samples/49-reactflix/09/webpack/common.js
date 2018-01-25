@@ -94,7 +94,8 @@ module.exports = {
       src: paths.src,
       components: join(paths.src, 'components'),
       utils: join(paths.src, 'utils'),
-      reducers: join(paths.src, 'redux-flow', 'reducers')
+      reducers: join(paths.src, 'redux-flow', 'reducers'),
+      config: join(paths.src, 'config')
     }
   }
 }

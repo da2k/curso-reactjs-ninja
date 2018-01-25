@@ -3,7 +3,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { addVideo } from 'reducers/videos/action-creators'
+import { registerVideo } from 'reducers/videos/action-creators'
 
 const RegisterVideo = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
       title: { value: title }
     } = e.target
 
-    dispatch(addVideo({ id, title }))
+    dispatch(registerVideo({ id, title }))
   }
 })
 
