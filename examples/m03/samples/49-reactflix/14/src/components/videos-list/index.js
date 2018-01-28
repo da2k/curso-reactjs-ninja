@@ -1,17 +1,18 @@
 'use strict'
 
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Play from 'components/play'
 
-const VideosList = () => (
+const VideosList = ({ videos }) => (
   <Container>
-    {Array.from({ length: 10 }).map((item, index) => (
-      <Video key={index}>
+    {Object.keys(videos).map((id) => (
+      <Video key={id}>
         <VideoThumb>
           <PlayStyled />
         </VideoThumb>
-        <VideoTitle>Título do Vídeo</VideoTitle>
+        <VideoTitle>{videos[id].title}</VideoTitle>
       </Video>
     ))}
   </Container>
@@ -53,4 +54,8 @@ const VideoTitle = styled.h2`
   font-size: 18px;
 `
 
-export default VideosList
+const mapStateToProps = (state) => ({
+  videos: state.videos
+})
+
+export default connect(mapStateToProps)(VideosList)
