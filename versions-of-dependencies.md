@@ -53,6 +53,14 @@ babel-preset-react:
 npm install --save-dev babel-preset-react@6
 ```
 
+### Vídeo 8
+
+react-hot-loader
+
+```
+npm install --save-dev react-hot-loader@3.0.0-beta.2
+```
+
 ### Vídeo 10
 
 standard (pode ser a última versão) e standard-loader:
