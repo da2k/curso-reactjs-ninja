@@ -71,7 +71,7 @@ Instalação do `extract-text-webpack-plugin`:
 npm install --save-dev extract-text-webpack-plugin@1.0.1
 ```
 
-### M2#A43
+### M2#A30 e M3#A43
 
 Instalação do `getstorybook` global:
 
