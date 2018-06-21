@@ -13,12 +13,13 @@ class App extends PureComponent {
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/sobre'>Sobre</Link></li>
+            <li><Link to='/contato'>Contato</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
           </ul>
 
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/sobre' component={Sobre} />
+            <Route path='/(sobre|contato)' component={Page} />
             <Route path='/blog' component={Blog} />
             <Route component={Error404} />
           </Switch>
@@ -36,8 +37,11 @@ const Home = () => (
   <h1>Home</h1>
 )
 
-const Sobre = () => (
-  <h1>Sobre</h1>
+const Page = ({ match }) => (
+  <div>
+    {console.log(match)}
+    <h1>{match.url}</h1>
+  </div>
 )
 
 const Blog = () => (
@@ -49,9 +53,16 @@ const Blog = () => (
       <li><Link to='/blog/post-2'>Post 2</Link></li>
     </ul>
 
-    <Route path='/blog/:post' component={Post} />
-    <Route exact path='/blog' component={NoPosts} />
+    <Switch>
+      <Route exact path='/blog' component={NoPosts} />
+      <Route path='/blog/:post(post-[12])' component={Post} />
+      <Route component={Post404} />
+    </Switch>
   </div>
+)
+
+const Post404 = () => (
+  <h1>Esse post não existe</h1>
 )
 
 const Post = ({ match }) => (
