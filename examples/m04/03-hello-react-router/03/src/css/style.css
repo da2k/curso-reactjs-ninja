@@ -3,3 +3,11 @@
 body {
   font: 30px sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  text-decoration: underline;
+}

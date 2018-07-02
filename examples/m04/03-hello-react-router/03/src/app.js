@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
 
@@ -11,10 +11,10 @@ class App extends PureComponent {
       <BrowserRouter>
         <div>
           <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/sobre'>Sobre</Link></li>
-            <li><Link to='/contato'>Contato</Link></li>
-            <li><Link to='/blog'>Blog</Link></li>
+            <li><NavLink activeStyle={{ color: 'red' }} to='/' exact>Home</NavLink></li>
+            <li><NavLink activeStyle={{ color: 'red' }} to='/sobre'>Sobre</NavLink></li>
+            <li><NavLink activeStyle={{ color: 'red' }} to='/contato'>Contato</NavLink></li>
+            <li><NavLink activeStyle={{ color: 'red' }} to='/blog'>Blog</NavLink></li>
           </ul>
 
           <Switch>
@@ -49,8 +49,8 @@ const Blog = () => (
     <h1>Blog</h1>
 
     <ul>
-      <li><Link to='/blog/post-1'>Post 1</Link></li>
-      <li><Link to='/blog/post-2'>Post 2</Link></li>
+      <li><NavLink to='/blog/post-1'>Post 1</NavLink></li>
+      <li><NavLink to='/blog/post-2'>Post 2</NavLink></li>
     </ul>
 
     <Switch>
