@@ -1,0 +1,13 @@
+@charset 'utf-8';
+
+body {
+  font: 30px sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active-link {
+  text-decoration: underline;
+}
