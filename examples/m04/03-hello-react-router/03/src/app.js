@@ -1,9 +1,13 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
+
+const Link = (props) => (
+  <NavLink activeStyle={{ color: 'red' }} {...props} />
+)
 
 class App extends PureComponent {
   render () {
@@ -11,7 +15,7 @@ class App extends PureComponent {
       <BrowserRouter>
         <div>
           <ul>
-            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/' exact>Home</Link></li>
             <li><Link to='/sobre'>Sobre</Link></li>
             <li><Link to='/contato'>Contato</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
