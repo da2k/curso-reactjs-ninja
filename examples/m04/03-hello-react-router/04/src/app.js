@@ -58,7 +58,7 @@ const Blog = () => (
     </ul>
 
     <Switch>
-      <Route exact path='/blog' render={(props) => <NoPosts numberOfPosts={numberOfPosts} {...props} />} />
+      <Route exact path='/blog' render={(props) => <NoPosts numberOfPosts={2} {...props} />} />
       <Route path='/blog/:post(post-[12])' component={Post} />
       <Route component={Post404} />
     </Switch>
