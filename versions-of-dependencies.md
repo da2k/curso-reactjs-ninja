@@ -21,12 +21,24 @@ webpack:
 npm install --save-dev webpack@1
 ```
 
+Instale também o `webpack` de forma global, para usar o comando `webpack` no seu terminal:
+
+```
+npm install -g webpack@1
+```
+
 ### Vídeo 3
 
 webpack-dev-server:
 
 ```
 npm install --save-dev webpack-dev-server@1
+```
+
+Instale também o `webpack-dev-server` de forma global, para usar o comando `webpack-dev-server` no seu terminal:
+
+```
+npm install -g webpack-dev-server@1
 ```
 
 ### Vídeo 5
