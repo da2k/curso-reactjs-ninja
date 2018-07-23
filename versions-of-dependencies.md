@@ -98,3 +98,11 @@ Instalação do `getstorybook` global:
 ```
 npm i -g getstorybook@1.6.1
 ```
+
+### M2#A33
+
+Instalação do `extract-text-webpack-plugin`:
+
+```
+npm i --save-dev extract-text-webpack-plugin@1
+```
