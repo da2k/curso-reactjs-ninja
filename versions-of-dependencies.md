@@ -81,6 +81,12 @@ standard (pode ser a última versão) e standard-loader:
 npm install --save-dev standard standard-loader@4
 ```
 
+webpack-validator
+
+```
+npm install --save-dev webpack-validator@3
+```
+
 ## Módulo 2
 
 ### M2#A33
