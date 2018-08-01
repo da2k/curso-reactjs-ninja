@@ -54,18 +54,24 @@ const Error404 = () => (
   <h1>Página não encontrada</h1>
 )
 
-const Home = () => (
-  <h1>Home</h1>
+const Home = ({ match }) => (
+  <div>
+    {console.log('Home match:', match)}
+    <h1>Home</h1>
+  </div>
 )
 
 const Page = ({ match }) => (
   <div>
+    {console.log('Page match:', match)}
     <h1>{match.url}</h1>
   </div>
 )
 
-const Blog = () => (
+let blogMatch = null
+const Blog = ({ match }) => (
   <div>
+    {console.log('Blog match:', blogMatch = match)}
     <h1>Blog</h1>
 
     <ul>
@@ -81,12 +87,16 @@ const Blog = () => (
   </div>
 )
 
-const Post404 = () => (
-  <h1>Esse post não existe</h1>
+const Post404 = ({ match }) => (
+  <div>
+    {console.log('Post404 match:', match, 'Post404 match é o mesmo do blog?', match === blogMatch)}
+    <h1>Esse post não existe</h1>
+  </div>
 )
 
 const Post = ({ match }) => (
   <div>
+    {console.log('Post match:', match)}
     <h2>Post: {match.params.post}</h2>
   </div>
 )
