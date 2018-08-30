@@ -5,25 +5,8 @@ import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
 
-// const Link = (props) => (
-//   <NavLink activeStyle={{ color: 'red' }} {...props} />
-// )
-
 const Link = (props) => (
-  <Route path={props.to} exact={props.exact}>
-    {({ match, history }) => (
-      <a
-        href={props.to}
-        style={match ? { color: 'red' } : null}
-        onClick={(e) => {
-          e.preventDefault()
-          history.push(props.to)
-        }}
-      >
-        {props.children}
-      </a>
-    )}
-  </Route>
+  <NavLink activeStyle={{ color: 'red' }} {...props} />
 )
 
 class App extends PureComponent {
@@ -54,24 +37,23 @@ const Error404 = () => (
   <h1>Página não encontrada</h1>
 )
 
-const Home = ({ match }) => (
+const Home = ({ match, location }) => (
   <div>
-    {console.log('Home match:', match)}
+    {console.log('Home location:', location)}
     <h1>Home</h1>
   </div>
 )
 
-const Page = ({ match }) => (
+const Page = ({ match, location }) => (
   <div>
-    {console.log('Page match:', match)}
+    {console.log('Page location:', location)}
     <h1>{match.url}</h1>
   </div>
 )
 
-let blogMatch = null
-const Blog = ({ match }) => (
+const Blog = ({ match, location }) => (
   <div>
-    {console.log('Blog match:', blogMatch = match)}
+    {console.log('Blog location:', location)}
     <h1>Blog</h1>
 
     <ul>
@@ -87,16 +69,16 @@ const Blog = ({ match }) => (
   </div>
 )
 
-const Post404 = ({ match }) => (
+const Post404 = ({ match, location }) => (
   <div>
-    {console.log('Post404 match:', match, 'Post404 match é o mesmo do blog?', match === blogMatch)}
+    {console.log('Post404 location:', location)}
     <h1>Esse post não existe</h1>
   </div>
 )
 
-const Post = ({ match }) => (
+const Post = ({ match, location }) => (
   <div>
-    {console.log('Post match:', match)}
+    {console.log('Post location:', location)}
     <h2>Post: {match.params.post}</h2>
   </div>
 )
