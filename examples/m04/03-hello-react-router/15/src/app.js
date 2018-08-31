@@ -15,6 +15,25 @@ class App extends PureComponent {
       <BrowserRouter>
         <div>
           <ul>
+            <li>
+              <Route>
+                {({ history }) => (
+                  <button onClick={(e) => history.goBack()}>{'<-'} Voltar</button>
+                )}
+              </Route>
+            </li>
+
+            <li>
+              <Route>
+                {({ history }) => (
+                  <button onClick={(e) => history.goForward()}>Próxima página {'->'}</button>
+                )}
+              </Route>
+            </li>
+
+          </ul>
+
+          <ul>
             <li><Link to='/' exact>Home</Link></li>
             <li><Link to='/sobre'>Sobre</Link></li>
             <li><Link to='/contato'>Contato</Link></li>
