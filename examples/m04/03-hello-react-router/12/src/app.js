@@ -6,7 +6,15 @@ import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
 import './css/style.css'
 
 const Link = (props) => (
-  <NavLink activeStyle={{ color: 'red' }} {...props} />
+  <Route>
+    {({ match, location, history }) => (
+      <a href={props.to} onClick={(e) => {
+        e.preventDefault()
+        history.push(props.to, { link: 'Link' })
+      }}>{props.children}</a>
+    )}
+  </Route>
+  // <NavLink activeStyle={{ color: 'red' }} {...props} />
 )
 
 class App extends PureComponent {
