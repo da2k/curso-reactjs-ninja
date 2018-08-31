@@ -15,8 +15,12 @@ class App extends PureComponent {
       <BrowserRouter>
         <div>
           <ul>
-            <li><Link to='/' exact>Home</Link></li>
-            <li><Link to='/sobre'>Sobre</Link></li>
+            <li><Link to={{
+              pathname: '/',
+              state: { id: 'home' },
+              search: '?name=daciuk'
+            }} exact>Home</Link></li>
+            <li><Link to='/sobre?name=daciuk'>Sobre</Link></li>
             <li><Link to='/contato'>Contato</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
             <li><a href='#informacoes-do-site'>Informações do site</a></li>
@@ -45,21 +49,6 @@ const Error404 = () => (
 const Home = ({ match, location }) => (
   <div>
     {console.log('Home location:', location)}
-    {console.log(
-      'location search:',
-      location.search
-        .replace('?', '')
-        .split('&')
-        .reduce((acc, item) => {
-          const [key, value] = item.split('=')
-          if (acc[key]) {
-            acc[key] = [acc[key]].concat(value)
-          } else {
-            acc[key] = value
-          }
-          return acc
-        }, {})
-    )}
     <h1>Home</h1>
   </div>
 )
