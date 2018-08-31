@@ -15,12 +15,8 @@ class App extends PureComponent {
       <BrowserRouter>
         <div>
           <ul>
-            <li><Link to={{
-              pathname: '/',
-              state: { id: 'home' },
-              search: '?name=daciuk'
-            }} exact>Home</Link></li>
-            <li><Link to='/sobre?name=daciuk'>Sobre</Link></li>
+            <li><Link to='/' exact>Home</Link></li>
+            <li><Link to='/sobre'>Sobre</Link></li>
             <li><Link to='/contato'>Contato</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
             <li><a href='#informacoes-do-site'>Informações do site</a></li>
@@ -46,23 +42,24 @@ const Error404 = () => (
   <h1>Página não encontrada</h1>
 )
 
-const Home = ({ match, location }) => (
+const Home = ({ match, location, history }) => (
   <div>
     {console.log('Home location:', location)}
+    {console.log('Home history:', history)}
     <h1>Home</h1>
   </div>
 )
 
-const Page = ({ match, location }) => (
+const Page = ({ match, location, history }) => (
   <div>
-    {console.log('Page location:', location)}
+    {console.log('Page history:', history)}
     <h1>{match.url}</h1>
   </div>
 )
 
-const Blog = ({ match, location }) => (
+const Blog = ({ match, location, history }) => (
   <div>
-    {console.log('Blog location:', location)}
+    {console.log('Blog history:', history)}
     <h1>Blog</h1>
 
     <ul>
@@ -78,16 +75,16 @@ const Blog = ({ match, location }) => (
   </div>
 )
 
-const Post404 = ({ match, location }) => (
+const Post404 = ({ match, location, history }) => (
   <div>
-    {console.log('Post404 location:', location)}
+    {console.log('Post404 history:', history)}
     <h1>Esse post não existe</h1>
   </div>
 )
 
-const Post = ({ match, location }) => (
+const Post = ({ match, location, history }) => (
   <div>
-    {console.log('Post location:', location)}
+    {console.log('Post history:', history)}
     <h2>Post: {match.params.post}</h2>
   </div>
 )
