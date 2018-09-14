@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, NavLink, Route, Switch, Prompt } from 'react-router-dom'
+import { BrowserRouter, NavLink, Route, Switch, Prompt, withRouter } from 'react-router-dom'
 
 import './css/style.css'
 
@@ -9,27 +9,25 @@ const Link = (props) => (
   <NavLink activeStyle={{ color: 'red' }} {...props} />
 )
 
+const ButtonBack_ = ({ history }) => (
+  <button onClick={(e) => history.goBack()}>{'<-'} Voltar</button>
+)
+const ButtonBack = withRouter(ButtonBack_)
+console.log('componente puro:', ButtonBack.WrappedComponent)
+
+const ButtonForward_ = ({ history }) => (
+  <button onClick={(e) => history.goForward()}>Próxima página {'->'}</button>
+)
+const ButtonForward = withRouter(ButtonForward_)
+
 class App extends PureComponent {
   render () {
     return (
       <BrowserRouter>
         <div>
           <ul>
-            <li>
-              <Route>
-                {({ history }) => (
-                  <button onClick={(e) => history.goBack()}>{'<-'} Voltar</button>
-                )}
-              </Route>
-            </li>
-
-            <li>
-              <Route>
-                {({ history }) => (
-                  <button onClick={(e) => history.goForward()}>Próxima página {'->'}</button>
-                )}
-              </Route>
-            </li>
+            <li><ButtonBack /></li>
+            <li><ButtonForward /></li>
 
           </ul>
 
