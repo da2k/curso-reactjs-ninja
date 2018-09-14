@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, NavLink, Route, Switch, Prompt, withRouter } from 'react-router-dom'
+import { HashRouter, BrowserRouter, NavLink, Route, Switch, Prompt, withRouter } from 'react-router-dom'
 
 import './css/style.css'
 
@@ -23,7 +23,7 @@ const ButtonForward = withRouter(ButtonForward_)
 class App extends PureComponent {
   render () {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <ul>
             <li><ButtonBack /></li>
@@ -52,7 +52,7 @@ class App extends PureComponent {
             <h2>Informações do site</h2>
           </div>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
