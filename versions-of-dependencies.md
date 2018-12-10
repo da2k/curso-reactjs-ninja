@@ -106,3 +106,11 @@ Instalação do `extract-text-webpack-plugin`:
 ```
 npm i --save-dev extract-text-webpack-plugin@1
 ```
+
+### M2#A34
+
+Instalação do `css-loader`:
+
+```
+npm i --save-dev css-loader@0
+```
