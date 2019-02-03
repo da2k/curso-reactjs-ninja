@@ -114,3 +114,13 @@ Instalação do `css-loader`:
 ```
 npm i --save-dev css-loader@0
 ```
+
+### M2#A51
+
+Instalação do `gulp`:
+
+```
+npm i --save-dev gulp@3.9.1
+<!-- ou -->
+yarn add --dev gulp@3.9.1
+```
