@@ -121,6 +121,4 @@ Instalação do `gulp`:
 
 ```
 npm i --save-dev gulp@3.9.1
-<!-- ou -->
-yarn add --dev gulp@3.9.1
 ```
