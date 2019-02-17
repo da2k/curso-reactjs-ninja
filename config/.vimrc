@@ -172,6 +172,13 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'jparise/vim-graphql'
     Plugin 'isRuslan/vim-es6'
     Plugin 'leafgarland/typescript-vim'
+    Plugin 'elixir-editors/vim-elixir'
+    Plugin 'slashmili/alchemist.vim'
+    Plugin 'chr4/nginx.vim'
+    Plugin 'terryma/vim-smooth-scroll'
+    Plugin 'styled-components/vim-styled-components'
+    Plugin 'terryma/vim-multiple-cursors'
+    Plugin 'yardnsm/vim-import-cost'
 call vundle#end()
 
 filetype on
@@ -193,6 +200,8 @@ let g:user_emmet_leader_key='<C-Y>'
 
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/snippets/emmet.json')), "\n"))
 
+" Enable all functions in all modes
+let g:user_emmet_mode='a'
 
 " ----------------------------------------------------------------------
 " | Plugins - Indent Guides                                            |
@@ -553,7 +562,6 @@ set statusline+=\ (%P)\        " Percent through file
 " | Personal Settings                                                  |
 " ----------------------------------------------------------------------
 com! Formatjson %!python -m json.tool
-com! Formatxml !xmllint --format -
 
 set list
 set nowrap
@@ -563,6 +571,9 @@ colorscheme onedark
 
 " EJS
 au BufNewFile,BufRead *.{ejs,mjml} set filetype=html
+
+" slow way of never break syntax highlight from files
+autocmd FileType * syntax sync fromstart
 
 
 " ----------------------------------------------------------------------
@@ -591,3 +602,25 @@ let g:jsx_ext_required = 0
 
 " Open file using `gf` in a vertical tab
 nnoremap gf :vertical wincmd f<CR>
+
+" fzf
+set rtp+=~/.fzf
+
+" Smooth Scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 30, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 30, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 30, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 30, 4)<CR>
+
+" Emmet
+" Use <Tab> to expand
+" let g:user_emmet_expandabbr_key='<Tab>'
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Add code highlight on blocks inside markdown files
+au BufNewFile,BufReadPost *.md[x] set filetype=markdown
+let g:markdown_fenced_languages = ['javascript', 'ruby', 'sh', 'yaml', 'javascript', 'html', 'vim', 'coffee', 'json', 'diff', 'jsx', 'js']
+" let g:markdown_fenced_languages=['coffee', 'css', 'erb=eruby', '.jsx=javascript', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+
+" Import cost
+let g:import_cost_always_open_split = 0
