@@ -83,6 +83,22 @@ npm install --save-dev standard standard-loader@4
 
 ## Módulo 2
 
+### M2#A04
+
+Instalação do `jest-cli`:
+
+```
+npm install --save-dev jest-cli@15
+```
+
+### M2#A07
+
+Instalação do `babel-core` e `babel-jest`:
+
+```
+npm install --save-dev babel-core@6 babel-jest@15
+```
+
 ### M2#A33
 
 Instalação do `extract-text-webpack-plugin`:
