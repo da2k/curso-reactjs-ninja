@@ -11,7 +11,7 @@ const Login = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <GitHubButton variant='contained' fullWidth>
+        <GitHubButton>
           Entrar com GitHub
         </GitHubButton>
       </Grid>
@@ -27,7 +27,10 @@ const Logo = styled(MainLogo)`
   width: 100%;
 `
 
-const GitHubButton = styled(Button)`
+const GitHubButton = styled(Button).attrs({
+  variant: 'contained',
+  fullWidth: true
+})`
   && {
     font-size: 20px;
     padding: 15px;
