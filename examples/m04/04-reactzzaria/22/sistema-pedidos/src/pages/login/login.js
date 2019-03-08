@@ -17,17 +17,39 @@ var config = {
 firebase.initializeApp(config)
 
 class Login extends PureComponent {
+  state = {
+    isUserLoggedIn: false,
+    user: null
+  }
+
   componentDidMount () {
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log('usuário logado', user)
-      } else {
-        console.log('usuário não está logado', user)
-      }
+      console.log('dados do usuário:', user)
+      this.setState({
+        isUserLoggedIn: !!user,
+        user
+      })
+    })
+  }
+
+  login () {
+    const provider = new firebase.auth.GithubAuthProvider()
+    firebase.auth().signInWithRedirect(provider)
+  }
+
+  logout = () => {
+    firebase.auth().signOut().then(() => {
+      console.log('deslogou!')
+      this.setState({
+        isUserLoggedIn: false,
+        user: null
+      })
     })
   }
 
   render () {
+    const { isUserLoggedIn, user } = this.state
+
     return (
       <Container>
         <Grid container justify='center' spacing={40}>
@@ -36,12 +58,20 @@ class Login extends PureComponent {
           </Grid>
 
           <Grid item xs={12} container justify='center'>
-            <GitHubButton onClick={() => {
-              const provider = new firebase.auth.GithubAuthProvider()
-              firebase.auth().signInWithRedirect(provider)
-            }}>
-              Entrar com GitHub
-            </GitHubButton>
+            {isUserLoggedIn && (
+              <>
+                <pre>{user.displayName}</pre>
+                <Button variant='contained' onClick={this.logout}>
+                  Sair
+                </Button>
+              </>
+            )}
+
+            {!isUserLoggedIn && (
+              <GitHubButton onClick={this.login}>
+                Entrar com GitHub
+              </GitHubButton>
+            )}
           </Grid>
         </Grid>
       </Container>
