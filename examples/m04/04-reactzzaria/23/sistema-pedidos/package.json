@@ -1,0 +1,56 @@
+{
+  "name": "sistema-pedidos",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "3.9.2",
+    "@material-ui/icons": "3.0.2",
+    "firebase": "5.8.6",
+    "react": "16.8.2",
+    "react-dom": "16.8.2",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "2.1.5",
+    "styled-components": "4.1.3"
+  },
+  "scripts": {
+    "dev": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "lint:fix": "standard --fix | snazzy"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "standard",
+      "standard-react"
+    ]
+  },
+  "rescripts": [
+    "env"
+  ],
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "fetch"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@rescripts/cli": "0.0.10",
+    "@rescripts/rescript-env": "0.0.5",
+    "eslint-config-standard": "12.0.0",
+    "eslint-config-standard-react": "7.0.2",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-node": "8.0.1",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-standard": "4.0.0",
+    "snazzy": "8.0.0",
+    "standard": "12.0.1"
+  }
+}
