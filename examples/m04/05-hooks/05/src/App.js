@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const App = () => (
   <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -9,79 +9,59 @@ const App = () => (
 
 class CounterClass extends React.PureComponent {
   state = {
-    counter: 0,
-    toggle: false
+    counter: 0
+  }
+
+  componentDidMount () {
+    this.updateDocumentTitle()
+  }
+
+  componentDidUpdate () {
+    this.updateDocumentTitle()
+  }
+
+  updateDocumentTitle () {
+    document.title = `CounterClass: ${this.state.counter}`
   }
 
   render () {
     return (
-      <>
-        <Counter
-          counter={this.state.counter}
-          increment={() => {
-            this.setState((prevState) => ({
-              counter: prevState.counter + 1
-            }))
-          }}
-
-          decrement={() => {
-            this.setState((prevState) => ({
-              counter: prevState.counter - 1
-            }))
-          }}
-        />
-
-        {this.state.toggle && <h1>Visivel!</h1>}
-        <button onClick={() => {
+      <Counter
+        counter={this.state.counter}
+        increment={() => {
           this.setState((prevState) => ({
-            toggle: !prevState.toggle
+            counter: prevState.counter + 1
           }))
-        }}>Toggle</button>
-      </>
+        }}
+
+        decrement={() => {
+          this.setState((prevState) => ({
+            counter: prevState.counter - 1
+          }))
+        }}
+      />
     )
   }
 }
 
 function CounterFunction () {
-  const [state, setState] = useState({
-    counter: 0,
-    toggle: false
+  const [counter, setCounter] = useState(0)
+
+  useEffect(() => {
+    document.title = `CounterFunction: ${counter}`
   })
 
   return (
-    <>
-      <Counter
-        counter={state.counter}
-        increment={() => {
-          setState(prevState => {
-            return {
-              ...prevState,
-              counter: prevState.counter + 1
-            }
-          })
-        }}
+    <Counter
+      counter={counter}
+      increment={() => {
+        setCounter(counter => counter + 1)
+      }}
 
-        decrement={() => {
-          setState(prevState => {
-            return {
-              ...prevState,
-              counter: prevState.counter - 1
-            }
-          })
-
-        }}
-      />
-
-      {state.toggle && <h1>Visivel!</h1>}
-      <button onClick={() => {
-        setState(prevState => {
-          return {
-            ...prevState,
-            toggle: !prevState.toggle
-          }
-        })
-      }}>Toggle</button>
-    </>
+      decrement={() => {
+        setCounter(counter => counter - 1)
+      }}
+    />
   )
 }
 
