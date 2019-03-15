@@ -56,29 +56,29 @@ class CounterClass extends React.PureComponent {
 
 function CounterFunction () {
   const [counter, setCounter] = useState(0)
-  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
-    console.log('useEffect')
+    console.log('componentDidMount')
+    setInterval(() => {
+      setCounter((counter) => counter + 1)
+    }, 1000)
+  }, [])
+
+  useEffect(() => {
     document.title = `CounterFunction: ${counter}`
   }, [counter])
 
   return (
-    <>
-      <Counter
-        counter={counter}
-        increment={() => {
-          setCounter(counter => counter + 1)
-        }}
+    <Counter
+      counter={counter}
+      increment={() => {
+        setCounter(counter => counter + 1)
+      }}
 
-        decrement={() => {
-          setCounter(counter => counter - 1)
-        }}
-      />
-
-      {toggle && <h1>Toggle</h1>}
-      <button onClick={() => setToggle(!toggle)}>Toggle</button>
-    </>
+      decrement={() => {
+        setCounter(counter => counter - 1)
+      }}
+    />
   )
 }
 
