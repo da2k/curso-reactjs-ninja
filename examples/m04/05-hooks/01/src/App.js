@@ -1,28 +1,60 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-class App extends Component {
-  render() {
+const App = () => (
+  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <CounterClass />
+    <CounterFunction />
+  </div>
+)
+
+class CounterClass extends React.PureComponent {
+  state = {
+    counter: 0
+  }
+
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Counter
+        counter={this.state.counter}
+        increment={() => {
+          this.setState({
+            counter: this.state.counter + 1
+          })
+        }}
+
+        decrement={() => {
+          this.setState({
+            counter: this.state.counter - 1
+          })
+        }}
+      />
+    )
   }
 }
 
-export default App;
+function CounterFunction () {
+  const [counter, setCounter] = useState(0)
+
+  return (
+    <Counter
+      counter={counter}
+      increment={() => {
+        setCounter(counter + 1)
+      }}
+
+      decrement={() => {
+        setCounter(counter - 1)
+      }}
+    />
+  )
+}
+
+const Counter = ({ counter, increment, decrement }) => (
+  <div style={{ textAlign: 'center' }}>
+    <h1>{counter}</h1>
+    <button onClick={decrement}>-</button>
+    <button onClick={increment}>+</button>
+  </div>
+)
+
+export default App
