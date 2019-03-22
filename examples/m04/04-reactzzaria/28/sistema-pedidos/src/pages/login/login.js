@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import { Button, Grid } from '@material-ui/core'
 import firebase from 'services/firebase'
 import { ReactComponent as MainLogo } from './logo-react-zzaria.svg'
-
-import { ColorContext } from 'app'
 
 function Login () {
   const [userInfo, setUserInfo] = useState({
@@ -13,8 +11,6 @@ function Login () {
   })
 
   const { isUserLoggedIn, user } = userInfo
-
-  const { color, setColor } = useContext(ColorContext)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -59,12 +55,9 @@ function Login () {
           )}
 
           {!isUserLoggedIn && (
-            <>
-              <GitHubButton onClick={login}>
-                Entrar com GitHub ({color})
-              </GitHubButton>
-              <button onClick={() => setColor('blue')}>Cor azul</button>
-            </>
+            <GitHubButton onClick={login}>
+              Entrar com GitHub
+            </GitHubButton>
           )}
         </Grid>
       </Grid>
