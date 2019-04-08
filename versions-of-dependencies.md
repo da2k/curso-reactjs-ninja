@@ -99,6 +99,12 @@ Instalação do `babel-core` e `babel-jest`:
 npm install --save-dev babel-core@6 babel-jest@15
 ```
 
+### M2#A31
+
+```
+npm install --save-dev raw-loader@0.5.1 style-loader@0.13.1
+```
+
 ### M2#A33
 
 Instalação do `extract-text-webpack-plugin`:
