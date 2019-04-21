@@ -144,3 +144,11 @@ Instalação do `gulp`:
 ```
 npm i --save-dev gulp@3.9.1
 ```
+
+### M2#A78
+
+Instalação do `clean-webpack-plugin`:
+
+```
+npm i --save-dev clean-webpack-plugin@0.1.16
+```
