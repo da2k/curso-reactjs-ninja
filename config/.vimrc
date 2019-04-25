@@ -136,6 +136,7 @@ call vundle#begin('~/.vim/plugins')
     " Let Vundle manage Vundle (this is important!)
     Plugin 'gmarik/Vundle.vim'
 
+    Plugin 'joshdick/onedark.vim'
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'ap/vim-css-color'
     Plugin 'chrisbra/unicode.vim'
