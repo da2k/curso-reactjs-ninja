@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import {
   AppBar,
+  Divider as MaterialDivider,
   Grid,
   IconButton,
   Menu,
@@ -58,11 +59,11 @@ const Main = () => {
 
       <Content>
         <Grid container direction='column' alignItems='center'>
-          <Typography variant='h3'>
+          <Typography variant='h3' gutterBottom>
             O que vai ser hoje, {userName}? =)
           </Typography>
 
-          <Typography variant='h4'>
+          <Typography variant='h4' gutterBottom>
             Escolha o tamanho da pizza:
           </Typography>
         </Grid>
@@ -70,13 +71,16 @@ const Main = () => {
         <Grid container spacing={16}>
           {pizzaSizes.map((pizza) => (
             <Grid item key={pizza.id} xs={4}>
-              <Paper style={{ padding: 20 }}>
+              <PaperPizza>
                 <div>{pizza.size}cm</div>
-                <Typography>{pizza.name}</Typography>
+
+                <Divider />
+
+                <Typography variant='h5'>{pizza.name}</Typography>
                 <Typography>
                   {pizza.slices} fatias, {pizza.flavours} sabores
                 </Typography>
-              </Paper>
+              </PaperPizza>
             </Grid>
           ))}
         </Grid>
@@ -110,6 +114,18 @@ const pizzaSizes = [
     flavours: 3
   }
 ]
+
+const Divider = styled(MaterialDivider)`
+  margin: 20px 0;
+  width: 100%;
+`
+
+const PaperPizza = styled(Paper)`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+`
 
 const Toolbar = styled(MaterialToolbar)`
   margin: 0 auto;
