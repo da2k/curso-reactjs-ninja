@@ -72,7 +72,9 @@ const Main = () => {
           {pizzaSizes.map((pizza) => (
             <Grid item key={pizza.id} xs={4}>
               <PaperPizza>
-                <div>{pizza.size}cm</div>
+                <Pizza>
+                  <PizzaText>{pizza.size}cm</PizzaText>
+                </Pizza>
 
                 <Divider />
 
@@ -125,6 +127,49 @@ const PaperPizza = styled(Paper)`
   display: flex;
   flex-direction: column;
   padding: 20px 0;
+`
+
+const Pizza = styled.div`
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  position: relative;
+  width: 200px;
+
+  &::before,
+  &::after {
+    background: #ccc;
+    content: '';
+    position: absolute;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    height: 1px;
+    width: 160px;
+  }
+
+  &::after {
+    height: 160px;
+    width: 1px;
+  }
+`
+
+const PizzaText = styled(Typography).attrs({
+  variant: 'h5'
+})`
+  align-items: center;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  position: relative;
+  width: 80px;
+  z-index: 1;
 `
 
 const Toolbar = styled(MaterialToolbar)`
