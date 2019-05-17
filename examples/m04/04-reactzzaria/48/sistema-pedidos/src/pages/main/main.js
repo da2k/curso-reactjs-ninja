@@ -12,7 +12,6 @@ import { AuthContext } from 'contexts/auth'
 
 const Main = () => {
   const { userInfo } = useContext(AuthContext)
-  const userName = userInfo.user.displayName.split(' ')[0]
 
   return (
     <>
@@ -23,7 +22,7 @@ const Main = () => {
       <Content>
         <Grid container direction='column' alignItems='center'>
           <Title variant='h3'>
-            O que vai ser hoje, {userName}? =)
+            O que vai ser hoje, {userInfo.user.firstName}? =)
           </Title>
 
           <Title variant='h4'>
