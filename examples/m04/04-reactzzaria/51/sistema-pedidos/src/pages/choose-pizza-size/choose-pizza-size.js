@@ -64,7 +64,7 @@ const Title = styled(Typography).attrs({
 
 const PizzasGrid = styled(Grid).attrs({
   container: true,
-  spacing: 16
+  spacing: 2
 })`
   padding: 20px;
 `

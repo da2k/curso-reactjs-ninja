@@ -9,7 +9,7 @@ function Login () {
 
   return (
     <Container>
-      <Grid container justify='center' spacing={40}>
+      <Grid container justify='center' spacing={5}>
         <Grid item>
           <Logo />
         </Grid>
