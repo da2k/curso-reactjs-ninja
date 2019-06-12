@@ -5,6 +5,8 @@ import { LinearProgress } from '@material-ui/core'
 import firebase from 'services/firebase'
 import { AuthContext } from 'contexts/auth'
 
+import { HOME, LOGIN } from 'routes'
+
 const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
 
@@ -32,18 +34,18 @@ function App ({ location }) {
     return <LinearProgress />
   }
 
-  if (isUserLoggedIn && location.pathname === '/login') {
-    return <Redirect to='/' />
+  if (isUserLoggedIn && location.pathname === LOGIN) {
+    return <Redirect to={HOME} />
   }
 
-  if (!isUserLoggedIn && location.pathname !== '/login') {
-    return <Redirect to='/login' />
+  if (!isUserLoggedIn && location.pathname !== LOGIN) {
+    return <Redirect to={LOGIN} />
   }
 
   return (
     <Suspense fallback={<LinearProgress />}>
       <Switch>
-        <Route path='/login' component={Login} />
+        <Route path={LOGIN} component={Login} />
         <Route component={MainPage} />
       </Switch>
     </Suspense>
