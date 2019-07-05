@@ -16,14 +16,14 @@ export default [
     name: 'Frango com Catupiry',
     value: {
       '0': 25,
-      '1': 35',
+      '1': 35,
       '2': 45
     }
   },
 
   {
     id: 2,
-    image: '/fake-data/images/pizza-prestigio.png',
+    image: '/fake-data/images/pizza-prestigio.jpg',
     name: 'Prestígio',
     value: {
       '0': 30,

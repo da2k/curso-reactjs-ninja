@@ -4,11 +4,15 @@ import styled from 'styled-components'
 import {
   Card,
   CardActionArea as MaterialCardActionArea,
-  Divider as MaterialDivider,
   Grid,
   Typography
 } from '@material-ui/core'
-import { H3, H4 } from 'ui'
+import {
+  Divider,
+  H3,
+  H4,
+  PizzasGrid
+} from 'ui'
 import { singularOrPlural } from 'utils'
 import { AuthContext } from 'contexts/auth'
 import pizzaSizes from 'fake-data/pizzas-sizes'
@@ -58,18 +62,6 @@ const ChoosePizzaSize = () => {
     </>
   )
 }
-
-const Divider = styled(MaterialDivider)`
-  margin: 20px 0;
-  width: 100%;
-`
-
-const PizzasGrid = styled(Grid).attrs({
-  container: true,
-  spacing: 2
-})`
-  padding: 20px;
-`
 
 const CardActionArea = styled(MaterialCardActionArea).attrs({
   component: Link
