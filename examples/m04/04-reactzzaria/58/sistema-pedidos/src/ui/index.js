@@ -1,3 +1,4 @@
+export { default as CardLink } from './card-link'
 export { default as Divider } from './divider'
 export { default as HeaderContent } from './header-content'
 export { default as PizzasGrid } from './pizzas-grid'

@@ -8,6 +8,7 @@ import {
   Typography
 } from '@material-ui/core'
 import {
+  CardLink,
   Divider,
   H4,
   HeaderContent,
@@ -38,14 +39,17 @@ const ChoosePizzaFlavours = ({ location }) => {
         {pizzasFlavours.map((pizza) => (
           <Grid item key={pizza.id} xs>
             <Card>
-              <Img src={pizza.image} alt={pizza.name} />
+              <Label>
+                <input type='checkbox' />
+                <Img src={pizza.image} alt={pizza.name} />
 
-              <Divider />
+                <Divider />
 
-              <Typography>{pizza.name}</Typography>
-              <Typography variant='h5'>
-                {pizza.value[id]}
-              </Typography>
+                <Typography>{pizza.name}</Typography>
+                <Typography variant='h5'>
+                  {pizza.value[id]}
+                </Typography>
+              </Label>
             </Card>
           </Grid>
         ))}
@@ -57,6 +61,10 @@ const ChoosePizzaFlavours = ({ location }) => {
 ChoosePizzaFlavours.propTypes = {
   location: t.object.isRequired
 }
+
+const Label = styled(CardLink).attrs({
+  component: 'label'
+})``
 
 const Img = styled.img`
   width: 200px;
