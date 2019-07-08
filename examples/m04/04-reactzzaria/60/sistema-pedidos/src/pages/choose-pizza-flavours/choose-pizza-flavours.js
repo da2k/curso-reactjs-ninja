@@ -21,7 +21,6 @@ import pizzasFlavours from 'fake-data/pizzas-flavours.js'
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
-  console.log('checkboxes:', checkboxes)
 
   if (!location.state) {
     return <Redirect to={HOME} />
@@ -30,10 +29,18 @@ const ChoosePizzaFlavours = ({ location }) => {
   const { flavours, id } = location.state
 
   const handleChangeCheckbox = (pizzaId) => (e) => {
+    console.log('checkboxes', checkboxes)
+    if (
+      checkboxesChecked(checkboxes).length === flavours &&
+      e.target.checked === true
+    ) {
+      return
+    }
+
     setCheckboxes((checkboxes) => {
       return {
         ...checkboxes,
-        [pizzaId]: !checkboxes[pizzaId]
+        [pizzaId]: e.target.checked
       }
     })
   }
@@ -77,6 +84,10 @@ const ChoosePizzaFlavours = ({ location }) => {
 
 ChoosePizzaFlavours.propTypes = {
   location: t.object.isRequired
+}
+
+function checkboxesChecked (checkboxes) {
+  return Object.values(checkboxes).filter(Boolean)
 }
 
 const Label = styled(CardLink).attrs({
