@@ -38,7 +38,7 @@ const Main = () => (
 )
 
 const Content = styled.main`
-  padding: 20px;
+  padding: ${({ theme }) => theme.spacing(3)}px;
 `
 
 const style = (theme) => ({
