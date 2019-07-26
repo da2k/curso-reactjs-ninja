@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
@@ -18,17 +18,19 @@ import {
 } from 'ui'
 import { singularOrPlural, toMoney } from 'utils'
 import { HOME } from 'routes'
+import { AuthContext } from 'contexts/auth'
 
 import pizzasFlavours from 'fake-data/pizzas-flavours.js'
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
+  const { userInfo } = useContext(AuthContext)
 
   if (!location.state) {
     return <Redirect to={HOME} />
   }
 
-  const { flavours, id } = location.state
+  const { flavours, id, name, slices } = location.state
 
   const handleChangeCheckbox = (pizzaId) => (e) => {
     console.log('checkboxes', checkboxes)
@@ -86,7 +88,15 @@ const ChoosePizzaFlavours = ({ location }) => {
         <Container>
           <Grid container>
             <OrderContainer>
-              Pedido
+              <Typography>
+                <b>{userInfo.user.firstName}, seu pedido é:</b>
+              </Typography>
+
+              <Typography>
+                Pizza <b>{name.toUpperCase()}</b> {'- '}
+                ({slices} {singularOrPlural(slices, 'fatia', 'fatias')}, {' '}
+                {flavours} {singularOrPlural(flavours, 'sabor', 'sabores')})
+              </Typography>
             </OrderContainer>
 
             <Grid item>
