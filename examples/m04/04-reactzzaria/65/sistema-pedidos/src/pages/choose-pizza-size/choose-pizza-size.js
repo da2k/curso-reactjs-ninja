@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core'
 import {
   CardLink,
+  Content,
   Divider,
   H3,
   H4,
@@ -22,7 +23,7 @@ const ChoosePizzaSize = () => {
   const { userInfo } = useContext(AuthContext)
 
   return (
-    <>
+    <Content>
       <Grid container direction='column' alignItems='center'>
         <H3>
           O que vai ser hoje, {userInfo.user.firstName}? =)
@@ -58,7 +59,7 @@ const ChoosePizzaSize = () => {
           </Grid>
         ))}
       </PizzasGrid>
-    </>
+    </Content>
   )
 }
 
