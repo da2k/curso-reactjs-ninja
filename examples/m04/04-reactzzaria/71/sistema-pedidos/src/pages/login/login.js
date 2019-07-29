@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Button, Grid } from '@material-ui/core'
-import { AuthContext } from 'contexts/auth'
+import { useAuth } from 'hooks'
 import { ReactComponent as MainLogo } from 'images/logo-react-zzaria.svg'
 
 function Login () {
-  const { login } = useContext(AuthContext)
+  const { login } = useAuth()
 
   return (
     <Container>
