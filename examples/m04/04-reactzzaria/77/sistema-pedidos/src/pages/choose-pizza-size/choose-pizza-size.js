@@ -40,7 +40,9 @@ const ChoosePizzaSize = () => {
             <Card>
               <CardLink to={{
                 pathname: CHOOSE_PIZZA_FLAVOURS,
-                state: pizza
+                state: {
+                  pizzaSize: pizza
+                }
               }}>
                 <Pizza>
                   <PizzaText>{pizza.size}cm</PizzaText>

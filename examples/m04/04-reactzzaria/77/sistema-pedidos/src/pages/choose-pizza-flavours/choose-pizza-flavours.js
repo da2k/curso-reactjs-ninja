@@ -28,7 +28,7 @@ const ChoosePizzaFlavours = ({ location }) => {
     return <Redirect to={HOME} />
   }
 
-  const { flavours, id } = location.state
+  const { flavours, id } = location.state.pizzaSize
 
   const handleChangeCheckbox = (pizzaId) => (e) => {
     console.log('checkboxes', checkboxes)
@@ -92,7 +92,10 @@ const ChoosePizzaFlavours = ({ location }) => {
           {
             to: {
               pathname: CHOOSE_PIZZA_QUANTITY,
-              state: location.state
+              state: {
+                ...location.state,
+                pizzaFlavours: getFlavoursNameAndId(checkboxes)
+              }
             },
             children: 'Quantas pizzas?',
             color: 'primary'
@@ -109,6 +112,15 @@ ChoosePizzaFlavours.propTypes = {
 
 function checkboxesChecked (checkboxes) {
   return Object.values(checkboxes).filter(Boolean)
+}
+
+function getFlavoursNameAndId (checkboxes) {
+  return Object.entries(checkboxes)
+    .filter(([, value]) => !!value)
+    .map(([id]) => ({
+      id,
+      name: pizzasFlavours.find((flavour) => flavour.id === id).name
+    }))
 }
 
 const Card = styled(MaterialCard)`
