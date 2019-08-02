@@ -7,7 +7,6 @@ import {
   HeaderContent,
   H4
 } from 'ui'
-import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
 
 function ChoosePizzaQuantity () {
   return (
@@ -26,18 +25,16 @@ function ChoosePizzaQuantity () {
       </Content>
 
       <Footer
-        buttons={[
-          {
-            to: CHOOSE_PIZZA_FLAVOURS,
+        buttons={{
+          back: {
             children: 'Mudar sabores'
           },
 
-          {
+          action: {
             to: '/',
-            children: 'Finalizar compra',
-            color: 'primary'
+            children: 'Finalizar compra'
           }
-        ]}
+        }}
       />
     </>
   )

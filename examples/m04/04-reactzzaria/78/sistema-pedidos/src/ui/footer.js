@@ -11,7 +11,7 @@ import {
 import { useAuth } from 'hooks'
 import { singularOrPlural } from 'utils'
 
-function Footer ({ buttons, location }) {
+function Footer ({ buttons, history, location }) {
   const { userInfo } = useAuth()
 
   const { pizzaSize, pizzaFlavours } = location.state
@@ -43,9 +43,20 @@ function Footer ({ buttons, location }) {
           </OrderContainer>
 
           <Grid item>
-            {buttons.map((button) => (
-              <Button key={button.to} {...button} />
-            ))}
+            <Button
+              {...buttons.back}
+              component='a'
+              onClick={(e) => {
+                e.preventDefault()
+                history.goBack()
+              }}
+            />
+
+            <Button
+              {...buttons.action}
+              component={Link}
+              color='primary'
+            />
           </Grid>
         </Grid>
       </Container>
@@ -54,7 +65,8 @@ function Footer ({ buttons, location }) {
 }
 
 Footer.propTypes = {
-  buttons: t.array.isRequired,
+  buttons: t.object.isRequired,
+  history: t.object.isRequired,
   location: t.object.isRequired
 }
 
@@ -73,7 +85,6 @@ const OrderContainer = styled(Grid).attrs({
 `
 
 const Button = styled(MaterialButton).attrs({
-  component: Link,
   variant: 'contained'
 })`
   && {
