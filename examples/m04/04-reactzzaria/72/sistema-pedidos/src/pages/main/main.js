@@ -3,13 +3,16 @@ import { Switch, Route } from 'react-router-dom'
 import { withStyles } from '@material-ui/core'
 import Header from './header'
 
-import { HOME, CHOOSE_PIZZA_FLAVOURS } from 'routes'
+import * as routes from 'routes'
 
 const ChoosePizzaSize = React.lazy(
   () => import('pages/choose-pizza-size')
 )
 const ChoosePizzaFlavours = React.lazy(
   () => import('pages/choose-pizza-flavours')
+)
+const ChoosePizzaQuantity = React.lazy(
+  () => import('pages/choose-pizza-quantity')
 )
 
 const Main = () => (
@@ -21,14 +24,19 @@ const Main = () => (
     <Suspense fallback='Loading...'>
       <Switch>
         <Route
-          path={HOME}
+          path={routes.HOME}
           exact
           component={ChoosePizzaSize}
         />
         <Route
-          path={CHOOSE_PIZZA_FLAVOURS}
+          path={routes.CHOOSE_PIZZA_FLAVOURS}
           component={ChoosePizzaFlavours}
         />
+        <Route
+          path={routes.CHOOSE_PIZZA_QUANTITY}
+          component={ChoosePizzaQuantity}
+        />
+
       </Switch>
     </Suspense>
   </>
