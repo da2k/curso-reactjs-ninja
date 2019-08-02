@@ -1,5 +1,7 @@
 import React from 'react'
+import t from 'prop-types'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 import { Input as MaterialInput } from '@material-ui/core'
 import {
   Footer,
@@ -7,8 +9,13 @@ import {
   HeaderContent,
   H4
 } from 'ui'
+import { HOME } from 'routes'
 
-function ChoosePizzaQuantity () {
+function ChoosePizzaQuantity ({ location }) {
+  if (!location.state) {
+    return <Redirect to={HOME} />
+  }
+
   return (
     <>
       <Content>
@@ -38,6 +45,10 @@ function ChoosePizzaQuantity () {
       />
     </>
   )
+}
+
+ChoosePizzaQuantity.propTypes = {
+  location: t.object.isRequired
 }
 
 const Input = styled(MaterialInput).attrs({
