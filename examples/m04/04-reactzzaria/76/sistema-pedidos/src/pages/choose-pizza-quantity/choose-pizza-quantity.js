@@ -2,25 +2,44 @@ import React from 'react'
 import styled from 'styled-components'
 import { Input as MaterialInput } from '@material-ui/core'
 import {
+  Footer,
   Content,
   HeaderContent,
   H4
 } from 'ui'
+import { CHOOSE_PIZZA_FLAVOURS } from 'routes'
 
 function ChoosePizzaQuantity () {
   return (
-    <Content>
-      <HeaderContent>
-        <H4>
-          Quantas pizzas você gostaria<br />
-          de pedir, com esses sabores?
-        </H4>
-      </HeaderContent>
+    <>
+      <Content>
+        <HeaderContent>
+          <H4>
+            Quantas pizzas você gostaria<br />
+            de pedir, com esses sabores?
+          </H4>
+        </HeaderContent>
 
-      <MainContent>
-        <Input defaultValue='1' autoFocus />
-      </MainContent>
-    </Content>
+        <MainContent>
+          <Input defaultValue='1' autoFocus />
+        </MainContent>
+      </Content>
+
+      <Footer
+        buttons={[
+          {
+            to: CHOOSE_PIZZA_FLAVOURS,
+            children: 'Mudar sabores'
+          },
+
+          {
+            to: '/',
+            children: 'Finalizar compra',
+            color: 'primary'
+          }
+        ]}
+      />
+    </>
   )
 }
 
