@@ -99,6 +99,14 @@ Instalação do `babel-core` e `babel-jest`:
 npm install --save-dev babel-core@6 babel-jest@15
 ```
 
+### M2#A30 e M3#A43
+
+Instalação do `getstorybook` global:
+
+```
+npm i -g getstorybook@1.6.1
+```
+
 ### M2#A31
 
 ```
@@ -111,22 +119,6 @@ Instalação do `extract-text-webpack-plugin`:
 
 ```
 npm install --save-dev extract-text-webpack-plugin@1.0.1
-```
-
-### M2#A30 e M3#A43
-
-Instalação do `getstorybook` global:
-
-```
-npm i -g getstorybook@1.6.1
-```
-
-### M2#A33
-
-Instalação do `extract-text-webpack-plugin`:
-
-```
-npm i --save-dev extract-text-webpack-plugin@1
 ```
 
 ### M2#A34
@@ -151,4 +143,12 @@ Instalação do `clean-webpack-plugin`:
 
 ```
 npm i --save-dev clean-webpack-plugin@0.1.16
+```
+
+### M2#A100
+
+Se no momento do build der algum erro, pode ser por causa do `extract-text-webpack-plugin`. Nesse caso, só instale a v2:
+
+```
+npm i --save-dev extract-text-webpack-plugin@2
 ```
