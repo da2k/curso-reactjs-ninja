@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import {
   Button,
   Input as MaterialInput
@@ -13,13 +13,17 @@ import {
   H4
 } from 'ui'
 import { HOME, CHECKOUT } from 'routes'
+import { useOrder } from 'hooks'
 
 function ChoosePizzaQuantity ({ location }) {
   const [quantity, setQuantity] = useState(1)
+  const { addPizzaToOrder } = useOrder()
 
   if (!location.state) {
     return <Redirect to={HOME} />
   }
+
+  console.log('location.state:', location.state)
 
   function handleChange (e) {
     const { value } = e.target
@@ -27,6 +31,14 @@ function ChoosePizzaQuantity ({ location }) {
     if (value >= 1) {
       setQuantity(e.target.value)
     }
+  }
+
+  function addPizza () {
+    addPizzaToOrder({
+      size: location.state.pizzaSize.id,
+      flavours: location.state.pizzaFlavours.map(f => f.id),
+      quantity
+    })
   }
 
   return (
@@ -42,10 +54,10 @@ function ChoosePizzaQuantity ({ location }) {
         <MainContent>
           <Input value={quantity} onChange={handleChange} autoFocus />
 
-          <Button variant='contained' color='secondary'>
+          <ButtonAddPizza onClick={addPizza}>
             Adicionar e<br />
             montar outra
-          </Button>
+          </ButtonAddPizza>
         </MainContent>
       </Content>
 
@@ -57,6 +69,7 @@ function ChoosePizzaQuantity ({ location }) {
 
           action: {
             to: CHECKOUT,
+            onClick: addPizza,
             children: 'Finalizar compra'
           }
         }}
@@ -68,6 +81,13 @@ function ChoosePizzaQuantity ({ location }) {
 ChoosePizzaQuantity.propTypes = {
   location: t.object.isRequired
 }
+
+const MainContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.spacing(2)}px;
+`
 
 const Input = styled(MaterialInput).attrs({
   type: 'number'
@@ -84,11 +104,14 @@ const Input = styled(MaterialInput).attrs({
   }
 `
 
-const MainContent = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: ${({ theme }) => theme.spacing(2)}px;
+const ButtonAddPizza = styled(Button).attrs({
+  color: 'secondary',
+  component: Link,
+  variant: 'contained'
+})`
+  && {
+    text-align: center;
+  }
 `
 
 export default ChoosePizzaQuantity
