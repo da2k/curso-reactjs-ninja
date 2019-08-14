@@ -23,8 +23,6 @@ function ChoosePizzaQuantity ({ location }) {
     return <Redirect to={HOME} />
   }
 
-  console.log('location.state:', location.state)
-
   function handleChange (e) {
     const { value } = e.target
 
@@ -54,7 +52,7 @@ function ChoosePizzaQuantity ({ location }) {
         <MainContent>
           <Input value={quantity} onChange={handleChange} autoFocus />
 
-          <ButtonAddPizza onClick={addPizza}>
+          <ButtonAddPizza to={HOME} onClick={addPizza}>
             Adicionar e<br />
             montar outra
           </ButtonAddPizza>
