@@ -7,8 +7,8 @@ import {
   Input as MaterialInput
 } from '@material-ui/core'
 import {
-  Footer,
   Content,
+  Footer,
   HeaderContent,
   H4
 } from 'ui'
@@ -27,7 +27,7 @@ function ChoosePizzaQuantity ({ location }) {
     const { value } = e.target
 
     if (value >= 1) {
-      setQuantity(e.target.value)
+      setQuantity(value)
     }
   }
 
