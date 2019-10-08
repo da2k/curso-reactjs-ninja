@@ -2,6 +2,7 @@ import React from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
 import {
+  Button,
   Grid,
   List,
   ListItem,
@@ -57,7 +58,7 @@ function Checkout () {
                   return (
                     <ListItem key={index}>
                       <Typography>
-                        {quantity} {' '}
+                        <b>{quantity}</b> {' '}
                         {singularOrPlural(quantity, 'pizza', 'pizzas')} {' '}
                         <b>{name.toUpperCase()}</b> {'- '}
                         ({slices} {singularOrPlural(slices, 'fatia', 'fatias')}, {' '}
@@ -78,11 +79,20 @@ function Checkout () {
       </Content>
 
       <Footer>
-        Footer do checkout
+        <FooterContent>
+          <Button variant='contained' color='primary'>
+            Confirmar dados
+          </Button>
+        </FooterContent>
       </Footer>
     </>
   )
 }
+
+const FooterContent = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
 
 function TextField ({ xs, autoFocus, ...props }) {
   return (
