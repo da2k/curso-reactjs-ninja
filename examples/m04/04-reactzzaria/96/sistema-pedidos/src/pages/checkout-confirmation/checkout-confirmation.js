@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import {
   Container,
+  Divider as MaterialDivider,
   Paper,
   Typography
 } from '@material-ui/core'
 import {
   Content,
   H4,
+  H6,
   OrderInfo
 } from 'ui'
 import { useAuth } from 'hooks'
@@ -27,8 +29,22 @@ function CheckoutConfirmation () {
 
       <Container maxWidth='sm'>
         <PaperContainer>
-          <Typography variant='h6'>Seu pedido:</Typography>
+          <H6>Seu pedido:</H6>
           <OrderInfo />
+
+          <Divider />
+
+          <H6>Endereço para entrega:</H6>
+          <Typography>
+            Rua tal, 10, Compl., Bairro, CEP: 10100-10 - Cidade/UF
+          </Typography>
+
+          <Divider />
+
+          <H6>Telefone para contato:</H6>
+          <Typography>
+            (44) 98888-7777
+          </Typography>
         </PaperContainer>
       </Container>
     </Content>
@@ -46,6 +62,12 @@ const Header = styled.div`
 const PaperContainer = styled(Paper)`
   && {
     padding: ${({ theme }) => theme.spacing(3)}px;
+  }
+`
+
+const Divider = styled(MaterialDivider)`
+  && {
+    margin: ${({ theme }) => theme.spacing(3, 0)};
   }
 `
 
