@@ -1,6 +1,7 @@
 import React from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
   Button,
   Grid,
@@ -17,6 +18,7 @@ import {
 } from 'ui'
 import { useOrder } from 'hooks'
 import { singularOrPlural } from 'utils'
+import { CHECKOUT_CONFIRMATION } from 'routes'
 
 function Checkout () {
   const { order } = useOrder()
@@ -80,7 +82,12 @@ function Checkout () {
 
       <Footer>
         <FooterContent>
-          <Button variant='contained' color='primary'>
+          <Button
+            variant='contained'
+            color='primary'
+            component={Link}
+            to={CHECKOUT_CONFIRMATION}
+          >
             Confirmar dados
           </Button>
         </FooterContent>
