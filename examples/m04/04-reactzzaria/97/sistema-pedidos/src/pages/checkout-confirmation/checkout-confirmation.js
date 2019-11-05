@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  Button,
   Container,
   Divider as MaterialDivider,
   Paper,
@@ -12,42 +13,51 @@ import {
   H6,
   OrderInfo
 } from 'ui'
+import FooterCheckout from 'pages/checkout/footer-checkout'
 import { useAuth } from 'hooks'
 
 function CheckoutConfirmation () {
   const { userInfo } = useAuth()
 
   return (
-    <Content>
-      <Header>
-        <H4>Oi {userInfo.user.firstName}!</H4>
+    <>
+      <Content>
+        <Header>
+          <H4>Oi {userInfo.user.firstName}!</H4>
 
-        <Typography>
-          Confere, por favor, se está tudo certo com o seu pedido antes de finalizar?
-        </Typography>
-      </Header>
-
-      <Container maxWidth='sm'>
-        <PaperContainer>
-          <H6>Seu pedido:</H6>
-          <OrderInfo />
-
-          <Divider />
-
-          <H6>Endereço para entrega:</H6>
           <Typography>
-            Rua tal, 10, Compl., Bairro, CEP: 10100-10 - Cidade/UF
+            Confere, por favor, se está tudo certo com o seu pedido antes de finalizar?
           </Typography>
+        </Header>
 
-          <Divider />
+        <Container maxWidth='sm'>
+          <PaperContainer>
+            <H6>Seu pedido:</H6>
+            <OrderInfo />
 
-          <H6>Telefone para contato:</H6>
-          <Typography>
-            (44) 98888-7777
-          </Typography>
-        </PaperContainer>
-      </Container>
-    </Content>
+            <Divider />
+
+            <H6>Endereço para entrega:</H6>
+            <Typography>
+              Rua tal, 10, Compl., Bairro, CEP: 10100-10 - Cidade/UF
+            </Typography>
+
+            <Divider />
+
+            <H6>Telefone para contato:</H6>
+            <Typography>
+              (44) 98888-7777
+            </Typography>
+          </PaperContainer>
+        </Container>
+      </Content>
+
+      <FooterCheckout justifyContent='center'>
+        <Button variant='contained' color='primary' size='large'>
+          Tudo certo!
+        </Button>
+      </FooterCheckout>
+    </>
   )
 }
 

@@ -10,11 +10,11 @@ import {
 } from '@material-ui/core'
 import {
   Content,
-  Footer,
   OrderInfo,
   Title as UiTitle
 } from 'ui'
 import { CHECKOUT_CONFIRMATION } from 'routes'
+import FooterCheckout from 'pages/checkout/footer-checkout'
 
 function Checkout () {
   return (
@@ -51,26 +51,19 @@ function Checkout () {
         </Grid>
       </Content>
 
-      <Footer>
-        <FooterContent>
-          <Button
-            variant='contained'
-            color='primary'
-            component={Link}
-            to={CHECKOUT_CONFIRMATION}
-          >
-            Confirmar dados
-          </Button>
-        </FooterContent>
-      </Footer>
+      <FooterCheckout>
+        <Button
+          variant='contained'
+          color='primary'
+          component={Link}
+          to={CHECKOUT_CONFIRMATION}
+        >
+          Confirmar dados
+        </Button>
+      </FooterCheckout>
     </>
   )
 }
-
-const FooterContent = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`
 
 function TextField ({ xs, autoFocus, ...props }) {
   return (
