@@ -16,20 +16,24 @@ import {
 } from 'ui'
 import FooterCheckout from 'pages/checkout/footer-checkout'
 import { useAuth } from 'hooks'
-import { CHECKOUT_SUCCESS } from 'routes'
+import { HOME } from 'routes'
 
-function CheckoutConfirmation () {
+function CheckoutSuccess () {
   const { userInfo } = useAuth()
 
   return (
     <>
       <Content>
         <Header>
-          <H4>Oi {userInfo.user.firstName}!</H4>
+          <H4>Prontinho {userInfo.user.firstName}!</H4>
 
           <Typography>
-            Confere, por favor, se está tudo certo com o seu pedido antes de finalizar?
+            Seu pedido será entregue no endereço abaixo em até
           </Typography>
+
+          <H6>
+            40 minutos =)
+          </H6>
         </Header>
 
         <Container maxWidth='sm'>
@@ -56,13 +60,12 @@ function CheckoutConfirmation () {
 
       <FooterCheckout justifyContent='center'>
         <Button
-          variant='contained'
-          color='primary'
+          color='secondary'
           size='large'
           component={Link}
-          to={CHECKOUT_SUCCESS}
+          to={HOME}
         >
-          Tudo certo!
+          {'<'} Voltar para a Página Inicial
         </Button>
       </FooterCheckout>
     </>
@@ -89,4 +92,4 @@ const Divider = styled(MaterialDivider)`
   }
 `
 
-export default CheckoutConfirmation
+export default CheckoutSuccess
