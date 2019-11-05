@@ -5,9 +5,20 @@ const OrderContext = createContext()
 
 function OrderProvider ({ children }) {
   const [pizzas, addPizza] = useState([])
+  const [orderInProgress, setOrderInProgress] = useState(false)
 
   function addPizzaToOrder (pizza) {
-    addPizza((pizzas) => pizzas.concat(pizza))
+    if (orderInProgress) {
+      return addPizza((pizzas) => pizzas.concat(pizza))
+    }
+
+    setOrderInProgress(true)
+    addPizza([pizza])
+  }
+
+  function sendOrder () {
+    console.log('send order')
+    setOrderInProgress(false)
   }
 
   return (
@@ -15,7 +26,8 @@ function OrderProvider ({ children }) {
       order: {
         pizzas
       },
-      addPizzaToOrder
+      addPizzaToOrder,
+      sendOrder
     }}>
       {children}
     </OrderContext.Provider>

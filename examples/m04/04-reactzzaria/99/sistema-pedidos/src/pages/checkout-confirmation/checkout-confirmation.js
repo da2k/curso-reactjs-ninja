@@ -15,11 +15,12 @@ import {
   OrderInfo
 } from 'ui'
 import FooterCheckout from 'pages/checkout/footer-checkout'
-import { useAuth } from 'hooks'
+import { useAuth, useOrder } from 'hooks'
 import { CHECKOUT_SUCCESS } from 'routes'
 
 function CheckoutConfirmation () {
   const { userInfo } = useAuth()
+  const { sendOrder } = useOrder()
 
   return (
     <>
@@ -61,6 +62,7 @@ function CheckoutConfirmation () {
           size='large'
           component={Link}
           to={CHECKOUT_SUCCESS}
+          onClick={sendOrder}
         >
           Tudo certo!
         </Button>
