@@ -12,16 +12,17 @@ import { useOrder } from 'hooks'
 import { singularOrPlural } from 'utils'
 
 function OrderInfo ({ showOptions }) {
-  const { order } = useOrder()
+  const { order, removePizzaFromOrder } = useOrder()
+  console.log('order:', order)
 
   return (
     <List>
-      {order.pizzas.map((pizza, index) => {
+      {order.pizzas.map((pizza) => {
         const { pizzaFlavours, pizzaSize, quantity } = pizza
         const { name, slices, flavours } = pizzaSize
 
         return (
-          <ListItem key={index}>
+          <ListItem key={pizza.id}>
             <Typography>
               <b>{quantity}</b> {' '}
               {singularOrPlural(quantity, 'pizza', 'pizzas')} {' '}
@@ -36,7 +37,11 @@ function OrderInfo ({ showOptions }) {
             </Typography>
 
             {showOptions && (
-              <IconButton title='Remover' color='secondary'>
+              <IconButton
+                title='Remover'
+                color='secondary'
+                onClick={() => removePizzaFromOrder(pizza.id)}
+              >
                 <Close />
               </IconButton>
             )}
