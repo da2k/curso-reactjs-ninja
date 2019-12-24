@@ -15,11 +15,12 @@ import {
   OrderInfo
 } from 'ui'
 import FooterCheckout from 'pages/checkout/footer-checkout'
-import { useAuth } from 'hooks'
+import { useAuth, useOrder } from 'hooks'
 import { HOME } from 'routes'
 
 function CheckoutSuccess () {
   const { userInfo } = useAuth()
+  const { order } = useOrder()
 
   return (
     <>
@@ -45,14 +46,19 @@ function CheckoutSuccess () {
 
             <H6>Endereço para entrega:</H6>
             <Typography>
-              Rua tal, 10, Compl., Bairro, CEP: 10100-10 - Cidade/UF
+              {order.address.address},
+              {' n'} {order.address.number},
+              {' '} {order.address.complement}<br />
+              Bairro: {order.address.district}<br />
+              CEP: {order.address.code}<br />
+              {order.address.city}/{order.address.state}
             </Typography>
 
             <Divider />
 
             <H6>Telefone para contato:</H6>
             <Typography>
-              (44) 98888-7777
+              {order.phone}
             </Typography>
           </PaperContainer>
         </Container>

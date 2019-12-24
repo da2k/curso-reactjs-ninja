@@ -20,7 +20,7 @@ import { CHECKOUT_SUCCESS } from 'routes'
 
 function CheckoutConfirmation () {
   const { userInfo } = useAuth()
-  const { sendOrder } = useOrder()
+  const { order, sendOrder } = useOrder()
 
   return (
     <>
@@ -42,14 +42,19 @@ function CheckoutConfirmation () {
 
             <H6>Endereço para entrega:</H6>
             <Typography>
-              Rua tal, 10, Compl., Bairro, CEP: 10100-10 - Cidade/UF
+              {order.address.address},
+              {' n'} {order.address.number},
+              {' '} {order.address.complement}<br />
+              Bairro: {order.address.district}<br />
+              CEP: {order.address.code}<br />
+              {order.address.city}/{order.address.state}
             </Typography>
 
             <Divider />
 
             <H6>Telefone para contato:</H6>
             <Typography>
-              (44) 98888-7777
+              {order.phone}
             </Typography>
           </PaperContainer>
         </Container>
