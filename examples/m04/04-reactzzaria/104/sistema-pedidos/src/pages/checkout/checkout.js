@@ -1,12 +1,10 @@
 import React from 'react'
-import t from 'prop-types'
 import styled from 'styled-components'
 import { Link, Redirect } from 'react-router-dom'
 import {
   Button,
   Grid,
-  Paper,
-  TextField as MaterialTextField
+  Paper
 } from '@material-ui/core'
 import {
   Content,
@@ -14,6 +12,8 @@ import {
   Title as UiTitle
 } from 'ui'
 import FooterCheckout from 'pages/checkout/footer-checkout'
+import FormAddress from './form-address'
+import TextField from './text-field'
 import { CHECKOUT_CONFIRMATION, HOME } from 'routes'
 import { useOrder } from 'hooks'
 
@@ -31,16 +31,7 @@ function Checkout () {
           <Grid item xs={12} md={6}>
             <Title>Qual o endereço para entrega?</Title>
             <PaperContainer>
-              <Grid container spacing={2}>
-                <TextField label='CEP' xs={4} autoFocus />
-                <Grid item xs={8} />
-
-                <TextField label='Rua' xs={9} />
-                <TextField label='Número' xs={3} />
-                <TextField label='Complemento' xs={12} />
-                <TextField label='Cidade' xs={9} />
-                <TextField label='Estado' xs={3} />
-              </Grid>
+              <FormAddress />
             </PaperContainer>
 
             <Title>Qual o seu telefone?</Title>
@@ -70,26 +61,6 @@ function Checkout () {
       </FooterCheckout>
     </>
   )
-}
-
-function TextField ({ xs, autoFocus, ...props }) {
-  return (
-    <Grid item xs={xs}>
-      <MaterialTextField
-        fullWidth
-        variant='outlined'
-        inputProps={{
-          autoFocus
-        }}
-        {...props}
-      />
-    </Grid>
-  )
-}
-
-TextField.propTypes = {
-  autoFocus: t.bool,
-  xs: t.number
 }
 
 const Title = styled(UiTitle).attrs({
