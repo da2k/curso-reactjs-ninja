@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import t from 'prop-types'
 import TextField from './text-field'
 
-function PhoneField () {
+function PhoneField ({ onUpdate = () => {} }) {
   const [phone, setPhone] = useState('')
+
+  useEffect(() => {
+    onUpdate(phone)
+  }, [phone, onUpdate])
 
   function handleChangePhone (e) {
     setPhone(phoneMask(e.target.value))
@@ -25,6 +30,10 @@ function PhoneField () {
       onChange={handleChangePhone}
     />
   )
+}
+
+PhoneField.propTypes = {
+  onUpdate: t.func
 }
 
 export default PhoneField
