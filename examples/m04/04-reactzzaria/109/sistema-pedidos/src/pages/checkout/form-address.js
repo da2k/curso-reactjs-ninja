@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useReducer, useRef } from 'react'
 import {
   CircularProgress,
   Grid
@@ -7,10 +7,9 @@ import TextField from './text-field'
 
 function FormAddress () {
   const [cep, setCep] = useState('')
-  const [addressState, dispatch] = useReducer(reducer, initialState)
   const [fetchingCep, setFetchingCep] = useState(false)
-
-  console.log('addressState:', addressState)
+  const [addressState, dispatch] = useReducer(reducer, initialState)
+  const numberField = useRef()
 
   useEffect(() => {
     async function fetchAddress () {
@@ -31,6 +30,8 @@ function FormAddress () {
         type: 'UPDATE_FULL_ADDRESS',
         payload: result
       })
+
+      numberField.current.focus()
     }
 
     fetchAddress()
@@ -48,7 +49,12 @@ function FormAddress () {
   }
 
   function handleChangeField (e) {
+    const { name, value } = e.target
 
+    dispatch({
+      type: 'UPDATE_FIELD',
+      payload: { name, value }
+    })
   }
 
   return (
@@ -74,7 +80,8 @@ function FormAddress () {
         {
           label: 'Número',
           xs: 3,
-          name: 'number'
+          name: 'number',
+          inputRef: numberField
         },
 
         {
@@ -113,6 +120,13 @@ function reducer (state, action) {
     return {
       ...state,
       ...action.payload
+    }
+  }
+
+  if (action.type === 'UPDATE_FIELD') {
+    return {
+      ...state,
+      [action.payload.name]: action.payload.value
     }
   }
 
