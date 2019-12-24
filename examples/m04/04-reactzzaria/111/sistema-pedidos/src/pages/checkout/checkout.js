@@ -13,7 +13,7 @@ import {
 } from 'ui'
 import FooterCheckout from 'pages/checkout/footer-checkout'
 import FormAddress from './form-address'
-import TextField from './text-field'
+import PhoneField from './phone-field'
 import { CHECKOUT_CONFIRMATION, HOME } from 'routes'
 import { useOrder } from 'hooks'
 
@@ -36,7 +36,7 @@ function Checkout () {
 
             <Title>Qual o seu telefone?</Title>
             <PaperContainer>
-              <TextField label='Telefone' xs={4} />
+              <PhoneField />
             </PaperContainer>
           </Grid>
 
