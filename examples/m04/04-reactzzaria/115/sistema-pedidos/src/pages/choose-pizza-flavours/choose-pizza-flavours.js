@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
@@ -19,10 +19,34 @@ import {
 import { singularOrPlural, toMoney } from 'utils'
 import { HOME, CHOOSE_PIZZA_QUANTITY } from 'routes'
 
-import pizzasFlavours from 'fake-data/pizzas-flavours.js'
+import { db } from 'services/firebase'
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
+  const [pizzasFlavours, setPizzasFlavours] = useState([])
+
+  useEffect(() => {
+    let mounted = true
+
+    db.collection('pizzasFlavours').get().then(querySnapshot => {
+      let flavours = []
+
+      querySnapshot.forEach(doc => {
+        flavours.push({
+          id: doc.id,
+          ...doc.data()
+        })
+      })
+
+      if (mounted) {
+        setPizzasFlavours(flavours)
+      }
+    })
+
+    return () => {
+      mounted = false
+    }
+  }, [])
 
   if (!location.state) {
     return <Redirect to={HOME} />
@@ -93,7 +117,10 @@ const ChoosePizzaFlavours = ({ location }) => {
               pathname: CHOOSE_PIZZA_QUANTITY,
               state: {
                 ...location.state,
-                pizzaFlavours: getFlavoursNameAndId(checkboxes)
+                pizzaFlavours: getFlavoursNameAndId({
+                  checkboxes,
+                  pizzasFlavours
+                })
               }
             },
             children: 'Quantas pizzas?',
@@ -113,7 +140,7 @@ function checkboxesChecked (checkboxes) {
   return Object.values(checkboxes).filter(Boolean)
 }
 
-function getFlavoursNameAndId (checkboxes) {
+function getFlavoursNameAndId ({ checkboxes, pizzasFlavours }) {
   return Object.entries(checkboxes)
     .filter(([, value]) => !!value)
     .map(([id]) => ({
