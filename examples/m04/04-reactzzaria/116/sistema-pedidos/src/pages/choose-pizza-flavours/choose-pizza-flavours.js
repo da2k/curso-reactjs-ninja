@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
@@ -18,38 +18,22 @@ import {
 } from 'ui'
 import { singularOrPlural, toMoney } from 'utils'
 import { HOME, CHOOSE_PIZZA_QUANTITY } from 'routes'
-
-import { db } from 'services/firebase'
+import { useCollection } from 'hooks'
 
 const ChoosePizzaFlavours = ({ location }) => {
   const [checkboxes, setCheckboxes] = useState(() => ({}))
-  const [pizzasFlavours, setPizzasFlavours] = useState([])
-
-  useEffect(() => {
-    let mounted = true
-
-    db.collection('pizzasFlavours').get().then(querySnapshot => {
-      let flavours = []
-
-      querySnapshot.forEach(doc => {
-        flavours.push({
-          id: doc.id,
-          ...doc.data()
-        })
-      })
-
-      if (mounted) {
-        setPizzasFlavours(flavours)
-      }
-    })
-
-    return () => {
-      mounted = false
-    }
-  }, [])
+  const pizzasFlavours = useCollection('pizzasFlavours')
 
   if (!location.state) {
     return <Redirect to={HOME} />
+  }
+
+  if (!pizzasFlavours) {
+    return 'Carregando sabores...'
+  }
+
+  if (pizzasFlavours.length === 0) {
+    return 'Não há dados.'
   }
 
   const { flavours, id } = location.state.pizzaSize
