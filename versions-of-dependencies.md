@@ -9,7 +9,11 @@ que estamos usando no momento em que o curso foi gravado. Com o decorrer do curs
 possível, todas as dependências utilizadas.
 
 Esse arquivo servirá como base para que você saiba todas as versões das dependências instaladas em cada aula.
-Instale as dependências conforme mostrado abaixo. Qualquer dúvida, abra uma issue aqui no repositório =)
+Instale as dependências conforme mostrado abaixo.
+
+Se alguma dependência utilizada em aula não estiver listada aqui, significa que você pode instalar exatamente como mostrado na aula.
+
+Qualquer dúvida, abra uma issue aqui no repositório =)
 
 ## Módulo React + Webpack
 
@@ -97,6 +101,12 @@ Instalação do `babel-core` e `babel-jest`:
 
 ```
 npm install --save-dev babel-core@6 babel-jest@15
+```
+
+Comando completo (com todas as dependências dessa parte):
+
+```
+npm install --save-dev babel-core@6 babel-jest@15 babel-preset-es2015 babel-preset-stage-0
 ```
 
 ### M2#A30 e M3#A43
