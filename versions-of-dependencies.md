@@ -15,6 +15,10 @@ Se alguma dependência utilizada em aula não estiver listada aqui, significa qu
 
 Qualquer dúvida, abra uma issue aqui no repositório =)
 
+## Versão do Node.js
+
+Para que as dependências funcionem corretamente, é recomendado ter instalado a versão 10 do Node.js no seu computador.
+
 ## Módulo React + Webpack
 
 ### Vídeo 2
