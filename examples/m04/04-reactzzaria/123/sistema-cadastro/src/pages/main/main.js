@@ -1,12 +1,37 @@
 import React, { Suspense } from 'react'
 import styled from 'styled-components'
 import { Switch, Route } from 'react-router-dom'
-import { Drawer as MaterialDrawer } from '@material-ui/core'
+import {
+  Divider,
+  Drawer as MaterialDrawer,
+  List,
+  ListItem,
+  ListItemText,
+  Typography
+} from '@material-ui/core'
 
 const Main = () => (
   <>
     <Drawer variant='permanent'>
-      drawer
+      <DrawerContent>
+        <Typography variant='h4'>
+          React-zzaria
+        </Typography>
+
+        <Typography>
+          (sistema de cadastro)
+        </Typography>
+      </DrawerContent>
+
+      <Divider />
+
+      <List>
+        {menuItems.map(item => (
+          <ListItem key={item.label} button>
+            <ListItemText>{item.label}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
     </Drawer>
 
     <Content>
@@ -19,12 +44,33 @@ const Main = () => (
   </>
 )
 
+const menuItems = [
+  {
+    label: 'Pedidos'
+  },
+
+  {
+    label: 'Tamanhos de pizzas'
+  },
+
+  {
+    label: 'Sabores de pizzas'
+  }
+]
+
 const Drawer = styled(MaterialDrawer)`
   && {
     .MuiPaper-root {
       width: ${({ theme }) => theme.extend.drawerWidth}px;
     }
   }
+`
+
+const DrawerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.spacing(1)}px;
+  text-align: center;
 `
 
 const Content = styled.main`
