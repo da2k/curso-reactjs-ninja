@@ -11,7 +11,12 @@ import {
   Typography
 } from '@material-ui/core'
 
+import { useOrders } from 'hooks'
+
 function Orders () {
+  const { orders } = useOrders()
+  console.log('orders:', orders)
+
   return allOrderStatus.map(orderStatus => (
     <TableContainer key={orderStatus.title}>
       <TableTitle>
