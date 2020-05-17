@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useLocation } from 'react-router-dom'
 import {
   Divider,
   Drawer as MaterialDrawer,
@@ -16,48 +16,53 @@ const Orders = lazy(() => import('pages/orders'))
 const PizzasSizes = lazy(() => import('pages/pizzas-sizes'))
 const PizzasFlavours = lazy(() => import('pages/pizzas-flavours'))
 
-const Main = () => (
-  <>
-    <Drawer variant='permanent'>
-      <DrawerContent>
-        <Typography variant='h4'>
-          React-zzaria
-        </Typography>
+const Main = () => {
+  const { pathname } = useLocation()
 
-        <Typography>
-          (sistema de cadastro)
-        </Typography>
-      </DrawerContent>
+  return (
+    <>
+      <Drawer variant='permanent'>
+        <DrawerContent>
+          <Typography variant='h4'>
+            React-zzaria
+          </Typography>
 
-      <Divider />
+          <Typography>
+            (sistema de cadastro)
+          </Typography>
+        </DrawerContent>
 
-      <List>
-        {menuItems.map(item => (
-          <ListItem
-            key={item.label}
-            button
-            component={Link}
-            to={item.link}
-          >
-            <ListItemText>{item.label}</ListItemText>
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
+        <Divider />
 
-    <Content>
-      <Suspense fallback='Loading...'>
-        <Switch>
+        <List>
           {menuItems.map(item => (
-            <Route key={item.link} path={item.link} exact={item.exact}>
-              <item.component />
-            </Route>
+            <ListItem
+              key={item.label}
+              button
+              selected={pathname === item.link}
+              component={Link}
+              to={item.link}
+            >
+              <ListItemText>{item.label}</ListItemText>
+            </ListItem>
           ))}
-        </Switch>
-      </Suspense>
-    </Content>
-  </>
-)
+        </List>
+      </Drawer>
+
+      <Content>
+        <Suspense fallback='Loading...'>
+          <Switch>
+            {menuItems.map(item => (
+              <Route key={item.link} path={item.link} exact={item.exact}>
+                <item.component />
+              </Route>
+            ))}
+          </Switch>
+        </Suspense>
+      </Content>
+    </>
+  )
+}
 
 const menuItems = [
   {
