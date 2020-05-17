@@ -1,42 +1,46 @@
 import React from 'react'
+import styled from 'styled-components'
 import {
   Paper,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
+  TableContainer as MaterialTableContainer,
   TableHead,
   TableRow,
   Typography
 } from '@material-ui/core'
 
 function Orders () {
-  return (
-    <TableContainer component={Paper}>
+  return allOrderStatus.map(orderStatus => (
+    <TableContainer key={orderStatus.title}>
+      <TableTitle>
+        {orderStatus.title}
+      </TableTitle>
       <Table>
-        <TableHead>
+        <THead>
           <TableRow>
-            <TableCell>
+            <Th>
               <Typography>
                 Informações do pedido
               </Typography>
-            </TableCell>
+            </Th>
           </TableRow>
-        </TableHead>
+        </THead>
 
         <TableBody>
           <TableRow>
             <TableCell>
               <div>
-                <Typography variant='button'>
+                <Subtitle>
                   Horário do pedido: 10:20h
-                </Typography>
+                </Subtitle>
               </div>
 
               <div>
-                <Typography variant='button'>
+                <Subtitle>
                   Pedido:
-                </Typography>
+                </Subtitle>
 
                 <ul>
                   <li>
@@ -49,9 +53,9 @@ function Orders () {
               </div>
 
               <div>
-                <Typography variant='button'>
+                <Subtitle>
                   Endereço de entrega:
-                </Typography>
+                </Subtitle>
 
                 <Typography>
                   Rua Tal, nº 92, {' '}
@@ -65,7 +69,61 @@ function Orders () {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  ))
 }
+
+const allOrderStatus = [
+  {
+    title: 'Pedidos pendentes'
+  },
+
+  {
+    title: 'Pedidos em produção'
+  },
+
+  {
+    title: 'Saiu para entrega'
+  },
+
+  {
+    title: 'Pedidos finalizados'
+  }
+]
+
+const TableContainer = styled(MaterialTableContainer).attrs({
+  component: Paper
+})`
+  && {
+    margin-bottom: ${({ theme }) => theme.spacing(3)}px;
+  }
+`
+
+const TableTitle = styled(Typography).attrs({
+  variant: 'h6'
+})`
+  && {
+    padding: ${({ theme }) => theme.spacing(3)}px;
+  }
+`
+
+const Subtitle = styled(Typography).attrs({
+  variant: 'button'
+})`
+  && {
+    font-weight: bold;
+  }
+`
+
+const THead = styled(TableHead)`
+  && {
+    background: ${({ theme }) => theme.palette.common.black};
+  }
+`
+
+const Th = styled(TableCell)`
+  && {
+    color: ${({ theme }) => theme.palette.common.white};
+  }
+`
 
 export default Orders
