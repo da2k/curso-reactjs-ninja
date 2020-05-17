@@ -13,6 +13,9 @@
       "react-app",
       "standard",
       "standard-react"
+    ],
+    "plugins": [
+      "only-warn"
     ]
   },
   "rescripts": [
@@ -56,6 +59,7 @@
     "eslint-config-standard-react": "9.2.0",
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-only-warn": "1.0.2",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-standard": "4.0.1",
