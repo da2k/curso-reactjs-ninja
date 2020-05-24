@@ -17,6 +17,15 @@ function Orders () {
   const { orders } = useOrders()
   console.log('orders:', orders)
 
+  function getHour (date) {
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric'
+    }
+
+    return Intl.DateTimeFormat('pt-BR', options).format(date)
+  }
+
   return allOrderStatus.map(orderStatus => (
     <TableContainer key={orderStatus.title}>
       <TableTitle>
@@ -34,43 +43,45 @@ function Orders () {
         </THead>
 
         <TableBody>
-          <TableRow>
-            <TableCell>
-              <div>
-                <Subtitle>
-                  Horário do pedido: 10:20h
-                </Subtitle>
-              </div>
+          {orders?.map(order => (
+            <TableRow key={order.id}>
+              <TableCell>
+                <div>
+                  <Subtitle>
+                    Horário do pedido: {getHour(order.createdAt.toDate())}
+                  </Subtitle>
+                </div>
 
-              <div>
-                <Subtitle>
-                  Pedido:
-                </Subtitle>
+                <div>
+                  <Subtitle>
+                    Pedido:
+                  </Subtitle>
 
-                <ul>
-                  <li>
-                    <Typography>
-                      1 pizza MÉDIA de {' '}
-                      Frango com Catupiry e Calabresa
-                    </Typography>
-                  </li>
-                </ul>
-              </div>
+                  <ul>
+                    <li>
+                      <Typography>
+                        1 pizza MÉDIA de {' '}
+                        Frango com Catupiry e Calabresa
+                      </Typography>
+                    </li>
+                  </ul>
+                </div>
 
-              <div>
-                <Subtitle>
-                  Endereço de entrega:
-                </Subtitle>
+                <div>
+                  <Subtitle>
+                    Endereço de entrega:
+                  </Subtitle>
 
-                <Typography>
-                  Rua Tal, nº 92, {' '}
-                  ap 10<br />
-                  Bairro: São Januário - CEP: 81828-233<br />
-                  São Paulo / SP
-                </Typography>
-              </div>
-            </TableCell>
-          </TableRow>
+                  <Typography>
+                    Rua Tal, nº 92, {' '}
+                    ap 10<br />
+                    Bairro: São Januário - CEP: 81828-233<br />
+                    São Paulo / SP
+                  </Typography>
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
