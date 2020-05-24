@@ -45,65 +45,77 @@ function Orders () {
         </THead>
 
         <TableBody>
-          {orders?.map(order => (
-            <TableRow key={order.id}>
-              <TableCell>
-                <div>
-                  <Subtitle>
-                    Horário do pedido: {getHour(order.createdAt.toDate())}
-                  </Subtitle>
-                </div>
+          {orders?.map(order => {
+            const {
+              address,
+              number,
+              complement,
+              district,
+              code: cep,
+              city,
+              state
+            } = order.address
 
-                <div>
-                  <Subtitle>
-                    Pedido:
-                  </Subtitle>
+            return (
+              <TableRow key={order.id}>
+                <TableCell>
+                  <div>
+                    <Subtitle>
+                      Horário do pedido: {getHour(order.createdAt.toDate())}
+                    </Subtitle>
+                  </div>
 
-                  <ul>
-                    {order.pizzas.map((pizza, index) => (
-                      <li key={index}>
-                        <Typography>
-                          {pizza.quantity} {' '}
-                          {singularOrPlural(
-                            pizza.quantity,
-                            'pizza',
-                            'pizzas'
-                          )}{' '}
-                          {pizza.size.name.toUpperCase()} de {' '}
-                          {pizza.flavours
-                            .map(flavour => flavour.name)
-                            .reduce((acc, flavour, index, array) => {
-                              if (index === 0) {
-                                return flavour
-                              }
+                  <div>
+                    <Subtitle>
+                      Pedido:
+                    </Subtitle>
 
-                              if (index === array.length - 1) {
-                                return `${acc} e ${flavour}`
-                              }
+                    <ul>
+                      {order.pizzas.map((pizza, index) => (
+                        <li key={index}>
+                          <Typography>
+                            {pizza.quantity} {' '}
+                            {singularOrPlural(
+                              pizza.quantity,
+                              'pizza',
+                              'pizzas'
+                            )}{' '}
+                            {pizza.size.name.toUpperCase()} de {' '}
+                            {pizza.flavours
+                              .map(flavour => flavour.name)
+                              .reduce((acc, flavour, index, array) => {
+                                if (index === 0) {
+                                  return flavour
+                                }
 
-                              return `${acc}, ${flavour}`
-                            }, '')}
-                        </Typography>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                                if (index === array.length - 1) {
+                                  return `${acc} e ${flavour}`
+                                }
 
-                <div>
-                  <Subtitle>
-                    Endereço de entrega:
-                  </Subtitle>
+                                return `${acc}, ${flavour}`
+                              }, '')}
+                          </Typography>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  <Typography>
-                    Rua Tal, nº 92, {' '}
-                    ap 10<br />
-                    Bairro: São Januário - CEP: 81828-233<br />
-                    São Paulo / SP
-                  </Typography>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
+                  <div>
+                    <Subtitle>
+                      Endereço de entrega:
+                    </Subtitle>
+
+                    <Typography>
+                      {address}, {number && `nº ${number}`} {' '}
+                      {complement && `, ${complement}`}<br />
+                      Bairro: {district} - CEP: {cep}<br />
+                      {city} / {state}
+                    </Typography>
+                  </div>
+                </TableCell>
+              </TableRow>
+            )
+          })}
         </TableBody>
       </Table>
     </TableContainer>
