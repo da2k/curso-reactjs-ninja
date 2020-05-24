@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import {
   Paper,
@@ -16,8 +16,32 @@ import { useOrders } from 'hooks'
 import { singularOrPlural } from 'utils'
 
 function Orders () {
-  const { orders } = useOrders()
+  const { orders, status } = useOrders()
   console.log('orders:', orders)
+
+  const allOrderStatus = useMemo(() => {
+    return [
+      {
+        title: 'Pedidos pendentes',
+        type: status.pending
+      },
+
+      {
+        title: 'Pedidos em produção',
+        type: status.inProgress
+      },
+
+      {
+        title: 'Saiu para entrega',
+        type: status.outForDelivery
+      },
+
+      {
+        title: 'Pedidos finalizados',
+        type: status.delivered
+      }
+    ]
+  }, [status])
 
   function getHour (date) {
     const options = {
@@ -45,7 +69,17 @@ function Orders () {
         </THead>
 
         <TableBody>
-          {orders?.pending.map(order => {
+          {orders?.[orderStatus.type].length === 0 && (
+            <TableRow>
+              <TableCell>
+                <Typography>
+                  Nenhum pedido com esse status.
+                </Typography>
+              </TableCell>
+            </TableRow>
+          )}
+
+          {orders?.[orderStatus.type].map(order => {
             const {
               address,
               number,
@@ -121,24 +155,6 @@ function Orders () {
     </TableContainer>
   ))
 }
-
-const allOrderStatus = [
-  {
-    title: 'Pedidos pendentes'
-  },
-
-  {
-    title: 'Pedidos em produção'
-  },
-
-  {
-    title: 'Saiu para entrega'
-  },
-
-  {
-    title: 'Pedidos finalizados'
-  }
-]
 
 const TableContainer = styled(MaterialTableContainer).attrs({
   component: Paper
