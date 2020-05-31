@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link, useRouteMatch } from 'react-router-dom'
 import {
   Button as MaterialButton,
   Grid,
@@ -12,9 +13,11 @@ import { Add, Delete, Edit } from '@material-ui/icons'
 import { TableContainer, TableTitle, THead, Th } from 'ui'
 import { useCollection } from 'hooks'
 import { singularOrPlural } from 'utils'
+import { PIZZAS_SIZES, NEW } from 'routes'
 
 function TablePizzasSizes () {
   const pizzasSizes = useCollection('pizzasSizes')
+  const newSizePath = useRouteMatch(`${PIZZAS_SIZES}${NEW}`)
 
   return (
     <TableContainer>
@@ -26,7 +29,13 @@ function TablePizzasSizes () {
         </Grid>
 
         <Grid item>
-          <Button color='primary' startIcon={<Add />}>
+          <Button
+            color='primary'
+            startIcon={<Add />}
+            component={Link}
+            to={`${PIZZAS_SIZES}${NEW}`}
+            disabled={!!newSizePath}
+          >
             Adicionar novo tamanho
           </Button>
         </Grid>
