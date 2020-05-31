@@ -2,16 +2,14 @@ import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import {
   Fab,
-  Paper,
   Table,
   TableBody,
   TableCell,
-  TableContainer as MaterialTableContainer,
-  TableHead,
   TableRow,
   Typography
 } from '@material-ui/core'
 import { Check, DonutLarge, Motorcycle } from '@material-ui/icons'
+import { TableContainer, TableTitle, THead, Th } from 'ui'
 import { useOrders } from 'hooks'
 import { singularOrPlural } from 'utils'
 
@@ -187,39 +185,11 @@ function Orders () {
   ))
 }
 
-const TableContainer = styled(MaterialTableContainer).attrs({
-  component: Paper
-})`
-  && {
-    margin-bottom: ${({ theme }) => theme.spacing(3)}px;
-  }
-`
-
-const TableTitle = styled(Typography).attrs({
-  variant: 'h6'
-})`
-  && {
-    padding: ${({ theme }) => theme.spacing(3)}px;
-  }
-`
-
 const Subtitle = styled(Typography).attrs({
   variant: 'button'
 })`
   && {
     font-weight: bold;
-  }
-`
-
-const THead = styled(TableHead)`
-  && {
-    background: ${({ theme }) => theme.palette.common.black};
-  }
-`
-
-const Th = styled(TableCell)`
-  && {
-    color: ${({ theme }) => theme.palette.common.white};
   }
 `
 
