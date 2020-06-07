@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useReducer } from 'react'
 import styled from 'styled-components'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import {
@@ -13,8 +13,20 @@ import { useCollection } from 'hooks'
 function FormRegisterSize () {
   const { id } = useParams()
   const { pizza, add } = usePizzaSize(id)
-  console.log('pizza para editar:', pizza)
+  const [pizzaEditable, dispatch] = useReducer(reducer, initialState)
+  console.log('pizzaEditable:', pizzaEditable)
   const history = useHistory()
+
+  useEffect(() => {
+    dispatch({
+      type: 'EDIT',
+      payload: pizza
+    })
+  }, [pizza])
+
+  const handleChange = useCallback((e) => {
+
+  }, [])
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
@@ -24,7 +36,7 @@ function FormRegisterSize () {
       name: name.value,
       size: +size.value,
       slices: +slices.value,
-      flavours: Number(flavours.value)
+      flavours: +flavours.value
     }
 
     await add(normalizedData)
@@ -43,23 +55,29 @@ function FormRegisterSize () {
         <TextField
           label='Nome para esse tamanho. Ex: Pequena'
           name='name'
-          value={pizza.name}
-          onChange={() => {}}
+          value={pizzaEditable.name}
+          onChange={handleChange}
         />
 
         <TextField
           label='Diâmetro da pizza em cm'
           name='size'
+          value={pizzaEditable.size}
+          onChange={handleChange}
         />
 
         <TextField
           label='Quantidade de fatias'
           name='slices'
+          value={pizzaEditable.slices}
+          onChange={handleChange}
         />
 
         <TextField
           label='Quantidade de sabores'
           name='flavours'
+          value={pizzaEditable.flavours}
+          onChange={handleChange}
         />
 
         <Grid item container justify='flex-end' spacing={2}>
@@ -102,6 +120,13 @@ const initialState = {
   size: '',
   slices: '',
   flavours: ''
+}
+
+function reducer (state, action) {
+  if (action.type === 'EDIT') {
+    return action.payload
+  }
+  return state
 }
 
 function usePizzaSize (id) {
