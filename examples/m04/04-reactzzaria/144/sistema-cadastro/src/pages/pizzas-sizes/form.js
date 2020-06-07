@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import {
   Button,
   Grid,
@@ -11,7 +11,9 @@ import { PIZZAS_SIZES } from 'routes'
 import { useCollection } from 'hooks'
 
 function FormRegisterSize () {
-  const { add } = useCollection('pizzasSizes')
+  const { id } = useParams()
+  const { pizza, add } = usePizzaSize(id)
+  console.log('pizza para editar:', pizza)
   const history = useHistory()
 
   const handleSubmit = useCallback(async (e) => {
@@ -41,6 +43,8 @@ function FormRegisterSize () {
         <TextField
           label='Nome para esse tamanho. Ex: Pequena'
           name='name'
+          value={pizza.name}
+          onChange={() => {}}
         />
 
         <TextField
@@ -92,5 +96,23 @@ const Container = styled(Grid).attrs({
     margin-bottom: ${({ theme }) => theme.spacing(5)}px;
   }
 `
+
+const initialState = {
+  name: '',
+  size: '',
+  slices: '',
+  flavours: ''
+}
+
+function usePizzaSize (id) {
+  const { data, add } = useCollection('pizzasSizes')
+  const [pizza, setPizza] = useState(initialState)
+
+  useEffect(() => {
+    setPizza(data?.find(p => p.id === id) || initialState)
+  }, [data, id])
+
+  return { pizza, add }
+}
 
 export default FormRegisterSize
