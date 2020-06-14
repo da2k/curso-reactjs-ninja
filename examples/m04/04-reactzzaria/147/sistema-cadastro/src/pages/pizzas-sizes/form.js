@@ -1,6 +1,7 @@
 import React, {
   useCallback,
   useEffect,
+  useMemo,
   useReducer,
   useRef,
   useState
@@ -23,6 +24,11 @@ function FormRegisterSize () {
   console.log('pizzaEditable:', pizzaEditable)
   const history = useHistory()
   const nameField = useRef()
+
+  const texts = useMemo(() => ({
+    title: id ? 'Editar tamanho' : 'Cadastrar novo tamanho',
+    button: id ? 'Salvar' : 'Cadastrar'
+  }), [id])
 
   useEffect(() => {
     nameField.current.focus()
@@ -66,7 +72,7 @@ function FormRegisterSize () {
     <Container>
       <Grid item xs={12}>
         <Typography variant='h4'>
-          Cadastrar novo tamanho
+          {texts.title}
         </Typography>
       </Grid>
 
@@ -109,7 +115,7 @@ function FormRegisterSize () {
 
           <Grid item>
             <Button variant='contained' color='primary' type='submit'>
-              Cadastrar
+              {texts.button}
             </Button>
           </Grid>
         </Grid>
