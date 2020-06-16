@@ -127,6 +127,14 @@ npm i -g getstorybook@1.6.1
 npm install --save-dev raw-loader@0.5.1 style-loader@0.13.1
 ```
 
+### M2#A32
+
+Instalação do `html-webpack-plugin`:
+
+```
+npm install --save-dev html-webpack-plugin@2
+```
+
 ### M2#A33
 
 Instalação do `extract-text-webpack-plugin`:
