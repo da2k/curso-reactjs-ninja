@@ -1,8 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link, useRouteMatch } from 'react-router-dom'
 import {
-  Button as MaterialButton,
   Grid,
   Table,
   TableBody,
@@ -10,7 +8,14 @@ import {
   TableRow
 } from '@material-ui/core'
 import { Add, Delete, Edit } from '@material-ui/icons'
-import { TableContainer, TableTitle, THead, Th } from 'ui'
+import {
+  TableButton,
+  TableContainer,
+  TableTitle,
+  TableTitleContainer,
+  THead,
+  Th
+} from 'ui'
 import { useCollection } from 'hooks'
 import { singularOrPlural } from 'utils'
 import { PIZZAS_SIZES, NEW, EDIT } from 'routes'
@@ -21,7 +26,7 @@ function TablePizzasSizes () {
 
   return (
     <TableContainer>
-      <TitleContainer>
+      <TableTitleContainer>
         <Grid item>
           <TableTitle>
             Tamanhos cadastrados
@@ -29,7 +34,7 @@ function TablePizzasSizes () {
         </Grid>
 
         <Grid item>
-          <Button
+          <TableButton
             color='primary'
             startIcon={<Add />}
             component={Link}
@@ -37,9 +42,9 @@ function TablePizzasSizes () {
             disabled={!!newSizePath}
           >
             Adicionar novo tamanho
-          </Button>
+          </TableButton>
         </Grid>
-      </TitleContainer>
+      </TableTitleContainer>
 
       <Table>
         <THead>
@@ -64,21 +69,21 @@ function TablePizzasSizes () {
               </TableCell>
 
               <TableCell align='right'>
-                <Button
+                <TableButton
                   startIcon={<Edit />}
                   component={Link}
                   to={`${PIZZAS_SIZES}${EDIT(pizza.id)}`}
                 >
                   Editar
-                </Button>
+                </TableButton>
 
-                <Button
+                <TableButton
                   color='secondary'
                   startIcon={<Delete />}
                   onClick={() => remove(pizza.id)}
                 >
                   Remover
-                </Button>
+                </TableButton>
               </TableCell>
             </TableRow>
           ))}
@@ -87,27 +92,5 @@ function TablePizzasSizes () {
     </TableContainer>
   )
 }
-
-const TitleContainer = styled(Grid).attrs({
-  container: true,
-  justify: 'space-between',
-  alignItems: 'center'
-})`
-  && {
-    padding: ${({ theme }) => theme.spacing(3)}px;
-
-    ${TableTitle} {
-      padding: 0;
-    }
-  }
-`
-
-const Button = styled(MaterialButton).attrs({
-  variant: 'contained'
-})`
-  && {
-    margin-left: ${({ theme }) => theme.spacing(2)}px;
-  }
-`
 
 export default TablePizzasSizes

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import {
+  Button as MaterialButton,
+  Grid,
   Paper,
   TableCell,
   TableContainer as MaterialTableContainer,
@@ -32,5 +34,27 @@ export const THead = styled(TableHead)`
 export const Th = styled(TableCell)`
   && {
     color: ${({ theme }) => theme.palette.common.white};
+  }
+`
+
+export const TableTitleContainer = styled(Grid).attrs({
+  container: true,
+  justify: 'space-between',
+  alignItems: 'center'
+})`
+  && {
+    padding: ${({ theme }) => theme.spacing(3)}px;
+
+    ${TableTitle} {
+      padding: 0;
+    }
+  }
+`
+
+export const TableButton = styled(MaterialButton).attrs({
+  variant: 'contained'
+})`
+  && {
+    margin-left: ${({ theme }) => theme.spacing(2)}px;
   }
 `
