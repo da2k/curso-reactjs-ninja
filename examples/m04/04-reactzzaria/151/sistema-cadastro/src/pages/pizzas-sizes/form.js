@@ -6,14 +6,13 @@ import React, {
   useRef,
   useState
 } from 'react'
-import styled from 'styled-components'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import {
   Button,
   Grid,
   Typography
 } from '@material-ui/core'
-import { TextField } from 'ui'
+import { Form, FormContainer, TextField } from 'ui'
 import { PIZZAS_SIZES } from 'routes'
 import { useCollection } from 'hooks'
 
@@ -69,7 +68,7 @@ function FormRegisterSize () {
   }, [add, edit, history, pizzaEditable])
 
   return (
-    <Container>
+    <FormContainer>
       <Grid item xs={12}>
         <Typography variant='h4'>
           {texts.title}
@@ -120,26 +119,9 @@ function FormRegisterSize () {
           </Grid>
         </Grid>
       </Form>
-    </Container>
+    </FormContainer>
   )
 }
-
-const Form = styled(Grid).attrs({
-  item: true,
-  container: true,
-  xs: 12,
-  spacing: 2,
-  component: 'form'
-})``
-
-const Container = styled(Grid).attrs({
-  container: true,
-  spacing: 2
-})`
-  && {
-    margin-bottom: ${({ theme }) => theme.spacing(5)}px;
-  }
-`
 
 const initialState = {
   name: '',
