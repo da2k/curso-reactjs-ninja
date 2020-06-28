@@ -64,7 +64,6 @@ function FormRegisterFlavour () {
         <TextField
           label='Link para imagem desse sabor'
           name='image'
-          inputRef={nameField}
         />
 
         <Grid item xs={12}>

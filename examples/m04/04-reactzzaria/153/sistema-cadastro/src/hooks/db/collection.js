@@ -26,12 +26,10 @@ function useCollection (collection) {
   }, [collection, mounted])
 
   const add = useCallback((data) => {
-    console.log('data add new', data)
     return db.collection(collection).add(data)
   }, [collection])
 
   const edit = useCallback((id, data) => {
-    console.log('edit:', id, data)
     return db.collection(collection).doc(id).set(data)
   }, [collection])
 

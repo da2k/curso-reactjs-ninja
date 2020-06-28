@@ -20,7 +20,6 @@ function FormRegisterSize () {
   const { id } = useParams()
   const { pizza, add, edit } = usePizzaSize(id)
   const [pizzaEditable, dispatch] = useReducer(reducer, initialState)
-  console.log('pizzaEditable:', pizzaEditable)
   const history = useHistory()
   const nameField = useRef()
 

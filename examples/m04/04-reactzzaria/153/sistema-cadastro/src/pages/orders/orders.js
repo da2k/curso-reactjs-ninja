@@ -15,7 +15,6 @@ import { singularOrPlural } from 'utils'
 
 function Orders () {
   const { orders, status, updateOrder } = useOrders()
-  console.log('orders:', orders)
 
   const allOrderStatus = useMemo(() => {
     return [
