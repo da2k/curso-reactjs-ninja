@@ -14,11 +14,16 @@ import {
   Typography
 } from '@material-ui/core'
 import { Form, FormContainer, TextField } from 'ui'
+import { useCollection } from 'hooks'
 import { PIZZAS_FLAVOURS } from 'routes'
 
 function FormRegisterFlavour () {
   const { id } = useParams()
   const nameField = useRef()
+  const history = useHistory()
+  const { data: pizzasSizes } = useCollection('pizzasSizes')
+  const { add } = useCollection('pizzasFlavours')
+  console.log('pizzasSizes:', pizzasSizes)
 
   const texts = useMemo(() => ({
     title: id ? 'Editar sabor' : 'Cadastrar novo sabor',
@@ -31,20 +36,20 @@ function FormRegisterFlavour () {
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
-    const { name, image } = e.target.elements
+    const fields = e.target.elements
 
     const normalizedData = {
-      name: name.value,
-      image: image.value,
-      value: {
-        0: 10,
-        1: 20,
-        2: 30
-      }
+      name: fields.name.value,
+      image: fields.image.value,
+      value: pizzasSizes.reduce((acc, size) => {
+        acc[size.id] = +fields[`size-${size.id}`].value
+        return acc
+      }, {})
     }
 
-    console.log('normalizedData', normalizedData)
-  }, [])
+    await add(normalizedData)
+    history.push(PIZZAS_FLAVOURS)
+  }, [pizzasSizes, add, history])
 
   return (
     <FormContainer>
@@ -70,23 +75,14 @@ function FormRegisterFlavour () {
           <InputLabel>Valores (em R$) para cada tamanho:</InputLabel>
         </Grid>
 
-        <TextField
-          label='Pequena'
-          name='size-0'
-          xs={3}
-        />
-
-        <TextField
-          label='Média'
-          name='size-1'
-          xs={3}
-        />
-
-        <TextField
-          label='Grande'
-          name='size-2'
-          xs={3}
-        />
+        {pizzasSizes?.map(size => (
+          <TextField
+            key={size.id}
+            label={size.name}
+            name={`size-${size.id}`}
+            xs={3}
+          />
+        ))}
 
         <Grid item container justify='flex-end' spacing={2}>
           <Grid item>
