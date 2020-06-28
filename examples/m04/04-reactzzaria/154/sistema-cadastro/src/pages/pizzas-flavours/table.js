@@ -27,6 +27,7 @@ function TablePizzasFlavours () {
   const newFlavourPath = useRouteMatch(`${PIZZAS_FLAVOURS}${NEW}`)
   const { data: pizzasFlavours, remove } = useCollection('pizzasFlavours')
   console.log(pizzasFlavours)
+  const { data: pizzasSizes } = useCollection('pizzasSizes')
 
   return (
     <TableContainer>
@@ -71,9 +72,19 @@ function TablePizzasFlavours () {
 
               <TableCell>
                 <List>
-                  <ListItem name='Broto' value={10} />
-                  <ListItem name='Pequena' value={20} />
-                  <ListItem name='Média' value={30} />
+                  {Object.entries(pizza.value).map(([sizeId, value]) => {
+                    const sizeName = pizzasSizes
+                      ?.find(s => s.id === sizeId)
+                      ?.name
+
+                    return (
+                      <ListItem
+                        key={sizeId}
+                        name={sizeName}
+                        value={value}
+                      />
+                    )
+                  })}
                 </List>
               </TableCell>
 
@@ -103,7 +114,7 @@ function TablePizzasFlavours () {
   )
 }
 
-const ListItem = ({ name, value }) => (
+const ListItem = ({ name = '', value }) => (
   <MaterialListItem>
     <ListItemText>
       <strong>{name}</strong>: R$ {value}
@@ -112,7 +123,7 @@ const ListItem = ({ name, value }) => (
 )
 
 ListItem.propTypes = {
-  name: t.string.isRequired,
+  name: t.string,
   value: t.number.isRequired
 }
 
