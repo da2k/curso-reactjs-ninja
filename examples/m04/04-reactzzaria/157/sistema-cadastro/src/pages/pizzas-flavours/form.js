@@ -23,7 +23,8 @@ function FormRegisterFlavour () {
   const history = useHistory()
   const { data: pizzasSizes } = useCollection('pizzasSizes')
   const { pizza, add } = usePizzaFlavour(id)
-  console.log('pizza:', pizza)
+  const [pizzaEditable, dispatch] = useReducer(reducer, initialState)
+  console.log('pizzaEditable:', pizzaEditable)
 
   const texts = useMemo(() => ({
     title: id ? 'Editar sabor' : 'Cadastrar novo sabor',
@@ -33,6 +34,17 @@ function FormRegisterFlavour () {
   useEffect(() => {
     nameField.current.focus()
   }, [id])
+
+  useEffect(() => {
+    dispatch({
+      type: 'EDIT',
+      payload: pizza
+    })
+  }, [pizza])
+
+  const handleChange = useCallback(async (e) => {
+
+  }, [])
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
@@ -64,11 +76,15 @@ function FormRegisterFlavour () {
           label='Nome do sabor'
           name='name'
           inputRef={nameField}
+          value={pizzaEditable.name}
+          onChange={handleChange}
         />
 
         <TextField
           label='Link para imagem desse sabor'
           name='image'
+          value={pizzaEditable.image}
+          onChange={handleChange}
         />
 
         <Grid item xs={12}>
@@ -106,6 +122,13 @@ const initialState = {
   name: '',
   image: '',
   value: {}
+}
+
+function reducer (state, action) {
+  if (action.type === 'EDIT') {
+    return action.payload
+  }
+  return state
 }
 
 function usePizzaFlavour (id) {
