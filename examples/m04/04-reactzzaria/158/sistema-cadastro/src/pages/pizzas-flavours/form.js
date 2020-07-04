@@ -22,7 +22,7 @@ function FormRegisterFlavour () {
   const nameField = useRef()
   const history = useHistory()
   const { data: pizzasSizes } = useCollection('pizzasSizes')
-  const { pizza, add } = usePizzaFlavour(id)
+  const { pizza, add, edit } = usePizzaFlavour(id)
   const [pizzaEditable, dispatch] = useReducer(reducer, initialState)
   console.log('pizzaEditable:', pizzaEditable)
 
@@ -43,25 +43,35 @@ function FormRegisterFlavour () {
   }, [pizza])
 
   const handleChange = useCallback(async (e) => {
+    const { name, value } = e.target
+    const action = name.includes('size-') ? 'UPDATE_SIZE' : 'UPDATE_FIELD'
+    const fieldName = name.includes('size-') ? name.replace('size-', '') : name
 
+    dispatch({
+      type: action,
+      payload: {
+        [fieldName]: value
+      }
+    })
   }, [])
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
-    const fields = e.target.elements
+
+    const { id, ...data } = pizzaEditable
 
     const normalizedData = {
-      name: fields.name.value,
-      image: fields.image.value,
-      value: pizzasSizes.reduce((acc, size) => {
-        acc[size.id] = +fields[`size-${size.id}`].value
+      ...data,
+      value: Object.entries(data.value).reduce((acc, [sizeId, value]) => {
+        acc[sizeId] = +value
         return acc
       }, {})
     }
 
-    await add(normalizedData)
+    if (id) await edit(id, normalizedData)
+    else await add(normalizedData)
     history.push(PIZZAS_FLAVOURS)
-  }, [pizzasSizes, add, history])
+  }, [add, edit, history, pizzaEditable])
 
   return (
     <FormContainer>
@@ -96,6 +106,8 @@ function FormRegisterFlavour () {
             key={size.id}
             label={size.name}
             name={`size-${size.id}`}
+            value={pizzaEditable.value[size.id] || ''}
+            onChange={handleChange}
             xs={3}
           />
         ))}
@@ -128,6 +140,24 @@ function reducer (state, action) {
   if (action.type === 'EDIT') {
     return action.payload
   }
+
+  if (action.type === 'UPDATE_FIELD') {
+    return {
+      ...state,
+      ...action.payload
+    }
+  }
+
+  if (action.type === 'UPDATE_SIZE') {
+    return {
+      ...state,
+      value: {
+        ...state.value,
+        ...action.payload
+      }
+    }
+  }
+
   return state
 }
 
