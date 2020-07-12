@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom'
 import Root from './root'
 import * as serviceWorker from './serviceWorker'
 
-import ErrorBoundary from './error'
-
 ReactDOM.render(
-  <ErrorBoundary>
-    {(hasError) => (
-      <Root hasError={hasError} />
-    )}
-  </ErrorBoundary>,
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
   document.getElementById('root')
 )
 

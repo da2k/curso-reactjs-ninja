@@ -8,7 +8,7 @@ function useCollection (collection) {
     let mounted = true
 
     db.collection(collection).get().then(querySnapshot => {
-      let docs = []
+      const docs = []
 
       querySnapshot.forEach(doc => {
         docs.push({

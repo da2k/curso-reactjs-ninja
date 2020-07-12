@@ -1,13 +1,13 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import {
   CssBaseline,
   createMuiTheme,
   MuiThemeProvider
 } from '@material-ui/core'
-import { AuthProvider, OrderProvider } from 'contexts'
+import { AuthProvider } from 'contexts'
 import App from './app'
 
 const theme = createMuiTheme({
@@ -23,14 +23,12 @@ function Root () {
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <OrderProvider>
-            <CssBaseline />
-            <GlobalStyle />
+          <CssBaseline />
+          <GlobalStyle />
 
-            <BrowserRouter>
-              <Route component={App} />
-            </BrowserRouter>
-          </OrderProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </AuthProvider>
       </ThemeProvider>
     </MuiThemeProvider>

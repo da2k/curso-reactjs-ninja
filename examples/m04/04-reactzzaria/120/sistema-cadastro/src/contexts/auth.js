@@ -31,7 +31,8 @@ function AuthProvider ({ children }) {
       logout,
       userInfo,
       setUserInfo
-    }}>
+    }}
+    >
       {children}
     </AuthContext.Provider>
   )
