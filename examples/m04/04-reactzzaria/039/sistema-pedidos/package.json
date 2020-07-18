@@ -9,7 +9,7 @@
     "react": "16.8.2",
     "react-dom": "16.8.2",
     "react-router-dom": "5.0.0",
-    "react-scripts": "2.1.5",
+    "react-scripts": "3.0.1",
     "styled-components": "4.1.3"
   },
   "scripts": {
