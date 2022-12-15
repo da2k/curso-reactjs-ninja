@@ -17,7 +17,7 @@ Qualquer dúvida, abra uma issue aqui no repositório =)
 
 ## Versão do Node.js
 
-Para que as dependências funcionem corretamente, é recomendado ter instalado a versão 10 do Node.js no seu computador.
+De preferência, use a versão LTS mais recente.
 
 ## Módulo React + Webpack
 
@@ -83,10 +83,10 @@ npm install --save-dev react-hot-loader@3.0.0-beta.2
 
 ### Vídeo 10
 
-standard (pode ser a última versão) e standard-loader:
+standard e standard-loader:
 
 ```
-npm install --save-dev standard standard-loader@4
+npm install --save-dev standard@16 standard-loader@4
 ```
 
 ## Módulo 2
